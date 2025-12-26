@@ -497,6 +497,14 @@
       color: var(--text-muted);
     }
 
+    .pricing-features.all-highlight li {
+      font-weight: 700;
+    }
+
+    .pricing-features.all-highlight li::before {
+      background: rgba(0,113,227,0.18);
+    }
+
     .pricing-cta {
       width: 100%;
       padding: 18px;
@@ -1099,7 +1107,7 @@
         <!-- Free Plan -->
         <div class="pricing-card">
           <div class="pricing-header">
-            <div class="pricing-name">무료</div>
+            <div class="pricing-name">프리</div>
             <div class="pricing-desc">시작하기에 완벽한 선택</div>
             <div class="pricing-price">₩0<span>/영구</span></div>
           </div>
@@ -1111,7 +1119,7 @@
             <li>자동화 규칙 편집</li>
             <li class="disabled">우선 지원</li>
           </ul>
-          <a href="#download" class="pricing-cta secondary">무료로 시작</a>
+          <a href="#download" class="pricing-cta secondary">프리로 시작</a>
         </div>
 
         <!-- Standard Plan -->
@@ -1142,7 +1150,7 @@
             <div class="pricing-price">₩21,800<span>/월</span></div>
             <div class="pricing-annual">연간 구독 ₩237,600/년</div>
           </div>
-          <ul class="pricing-features">
+          <ul class="pricing-features all-highlight">
             <li>동시 실행 10개</li>
             <li>10PC 등록</li>
             <li>무제한 사용</li>
@@ -1167,7 +1175,7 @@
           <thead>
             <tr>
               <th>기능</th>
-              <th>무료</th>
+              <th>프리</th>
               <th>스탠다드</th>
               <th>프로</th>
             </tr>
@@ -1218,7 +1226,7 @@
             <tr>
               <td>지원</td>
               <td>-</td>
-              <td>DM</td>
+              <td>DM 지원</td>
               <td>사용자 서버 초대</td>
             </tr>
             <tr>
