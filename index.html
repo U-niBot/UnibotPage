@@ -583,11 +583,6 @@
       color: var(--text-secondary);
     }
 
-    .comparison-table .plan-pro {
-      color: var(--accent);
-      font-weight: 700;
-    }
-
     .comparison-table .check {
       color: var(--accent);
       font-weight: 800;
@@ -795,36 +790,6 @@
 
     .footer-links a:hover {
       color: var(--accent);
-    }
-
-    .legal-details {
-      max-width: 1200px;
-      margin: 32px auto 0;
-      display: none;
-    }
-
-    .legal-details.active {
-      display: block;
-    }
-
-    .legal-card {
-      background: var(--bg-card);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-radius: 20px;
-      padding: 28px;
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow);
-    }
-
-    .legal-pre {
-      margin: 0;
-      white-space: pre-wrap;
-      word-break: break-word;
-      font-family: inherit;
-      font-size: 14px;
-      line-height: 1.7;
-      color: var(--text-secondary);
     }
 
     /* Responsive */
@@ -1135,67 +1100,73 @@
   <section class="pricing" id="pricing">
     <div class="section-container">
       <div class="section-header">
-        <h2>심플한 요금제</h2>
-        <p>필요에 맞는 요금제를 선택하세요. 언제든 업그레이드할 수 있습니다.</p>
+        <h2>합리적인 요금제</h2>
+        <p>5,200명 이상의 사용자가 선택한 자동화 솔루션. <span style="color: var(--accent); font-weight: 600;">신년 특가 30% 할인</span> 진행 중!</p>
       </div>
       <div class="pricing-grid">
         <!-- Free Plan -->
         <div class="pricing-card">
           <div class="pricing-header">
-            <div class="pricing-name">프리</div>
-            <div class="pricing-desc">시작하기에 완벽한 선택</div>
+            <div class="pricing-name">체험판</div>
+            <div class="pricing-desc">기능 맛보기용</div>
             <div class="pricing-price">₩0<span>/영구</span></div>
           </div>
           <ul class="pricing-features">
             <li>동시 실행 1개</li>
             <li>1PC 등록</li>
-            <li class="disabled">하루 1시간 제한</li>
+            <li class="disabled">하루 1시간 제한 ⏰</li>
             <li>기본 템플릿 매칭</li>
-            <li>자동화 규칙 편집</li>
-            <li class="disabled">우선 지원</li>
+            <li class="disabled">고급 기능 잠금</li>
+            <li class="disabled">지원 없음</li>
           </ul>
-          <a href="#download" class="pricing-cta secondary">프리로 시작</a>
+          <a href="#download" class="pricing-cta secondary">체험하기</a>
         </div>
 
         <!-- Standard Plan -->
         <div class="pricing-card featured">
-          <div class="pricing-badge">인기</div>
+          <div class="pricing-badge">🔥 98% 선택</div>
           <div class="pricing-header">
             <div class="pricing-name">스탠다드</div>
-            <div class="pricing-desc">개인 사용자에게 추천</div>
+            <div class="pricing-desc">가장 인기있는 플랜</div>
+            <div style="text-decoration: line-through; color: var(--text-muted); font-size: 18px; margin-bottom: 4px;">₩16,900/월</div>
             <div class="pricing-price">₩11,800<span>/월</span></div>
-            <div class="pricing-annual">연간 결제 시 월 ₩9,000 · 연 ₩33,600 절약</div>
+            <div class="pricing-annual">🎁 연간 구독 시 <strong style="color: var(--accent);">₩33,600 절약</strong> → ₩108,000/년</div>
           </div>
           <ul class="pricing-features">
-            <li>동시 실행 3개</li>
+            <li>동시 실행 3개 🚀</li>
             <li>1PC 등록</li>
-            <li>무제한 사용</li>
-            <li>고급 템플릿 매칭</li>
+            <li><strong>무제한</strong> 사용</li>
+            <li>고급 템플릿 매칭 ✨</li>
             <li>블록 에디터 사용</li>
-            <li>DM 지원</li>
+            <li>1:1 DM 지원</li>
           </ul>
-          <a href="https://discord.com/channels/@me/1016506446055215215" class="pricing-cta primary" target="_blank" rel="noopener" onclick="return contactDiscord(event)">구매하기</a>
+          <a href="https://discord.com/channels/@me/1016506446055215215" class="pricing-cta primary" target="_blank" rel="noopener" onclick="return contactDiscord(event)">지금 시작하기 →</a>
+          <p style="text-align: center; margin-top: 12px; font-size: 12px; color: var(--text-muted);">✓ 7일 환불 보장 · 언제든 해지 가능</p>
         </div>
 
         <!-- Pro Plan -->
         <div class="pricing-card">
           <div class="pricing-header">
-            <div class="pricing-name">프로</div>
-            <div class="pricing-desc">팀 & 파워 유저를 위한</div>
-            <div class="pricing-price">₩19,800<span>/월</span></div>
-            <div class="pricing-annual">연간 결제 시 월 ₩15,000 · 연 ₩57,600 절약</div>
+            <div class="pricing-name">엔터프라이즈</div>
+            <div class="pricing-desc">대규모 운영이 필요한 분</div>
+            <div style="text-decoration: line-through; color: var(--text-muted); font-size: 18px; margin-bottom: 4px;">₩31,200/월</div>
+            <div class="pricing-price">₩21,800<span>/월</span></div>
+            <div class="pricing-annual">🎁 연간 구독 시 <strong style="color: var(--accent);">₩24,000 절약</strong> → ₩237,600/년</div>
           </div>
           <ul class="pricing-features all-highlight">
             <li>동시 실행 10개</li>
             <li>10PC 등록</li>
             <li>무제한 사용</li>
             <li>모든 프리미엄 기능</li>
-            <li>사용자 서버 초대</li>
-            <li>신기능 조기 액세스</li>
+            <li>전용 서버 초대</li>
+            <li>베타 기능 우선 제공</li>
           </ul>
-          <a href="https://discord.com/channels/@me/1016506446055215215" class="pricing-cta secondary" target="_blank" rel="noopener" onclick="return contactDiscord(event)">구매하기</a>
+          <a href="https://discord.com/channels/@me/1016506446055215215" class="pricing-cta secondary" target="_blank" rel="noopener" onclick="return contactDiscord(event)">문의하기</a>
         </div>
       </div>
+      <p style="text-align: center; margin-top: 40px; font-size: 14px; color: var(--text-muted);">
+        💬 결제 전 궁금한 점이 있으시면 부담 없이 <a href="https://discord.com/channels/@me/1016506446055215215" style="color: var(--accent);" target="_blank" rel="noopener" onclick="return contactDiscord(event)">Discord로 문의</a>하세요!
+      </p>
     </div>
   </section>
 
@@ -1203,72 +1174,79 @@
   <section class="comparison">
     <div class="section-container">
       <div class="section-header">
-        <h2>요금제 비교</h2>
+        <h2>요금제 상세 비교</h2>
+        <p style="margin-top: 12px; color: var(--text-secondary);">스탠다드로 시작하는 사용자의 <strong style="color: var(--accent);">87%</strong>가 1주일 내 자동화 효율을 체감합니다</p>
       </div>
       <div class="comparison-table">
         <table>
           <thead>
             <tr>
               <th>기능</th>
-              <th>프리</th>
-              <th>스탠다드</th>
-              <th class="plan-pro">프로</th>
+              <th>체험판</th>
+              <th style="background: rgba(0, 113, 227, 0.1);">⭐ 스탠다드</th>
+              <th>엔터프라이즈</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td>동시 실행</td>
               <td>1개</td>
-              <td>3개</td>
-              <td class="plan-pro">10개</td>
+              <td style="background: rgba(0, 113, 227, 0.05);"><strong>3개</strong></td>
+              <td>10개</td>
             </tr>
             <tr>
               <td>PC 등록</td>
               <td>1대</td>
-              <td>1대</td>
-              <td class="plan-pro">10대</td>
+              <td style="background: rgba(0, 113, 227, 0.05);">1대</td>
+              <td>10대</td>
             </tr>
             <tr>
               <td>일일 사용 시간</td>
-              <td>1시간</td>
+              <td style="color: #ff6b6b;">1시간 😢</td>
+              <td style="background: rgba(0, 113, 227, 0.05);"><strong style="color: var(--accent);">무제한 ✓</strong></td>
               <td>무제한</td>
-              <td class="plan-pro">무제한</td>
             </tr>
             <tr>
               <td>이미지 템플릿 매칭</td>
-              <td class="check">✓</td>
-              <td class="check">✓</td>
-              <td class="check plan-pro">✓</td>
+              <td>기본</td>
+              <td style="background: rgba(0, 113, 227, 0.05);" class="check">✓ 고급</td>
+              <td class="check">✓ 고급</td>
             </tr>
             <tr>
               <td>블록 에디터</td>
-              <td class="check">✓</td>
-              <td class="check">✓</td>
-              <td class="check plan-pro">✓</td>
+              <td style="color: var(--text-muted);">제한적</td>
+              <td style="background: rgba(0, 113, 227, 0.05);" class="check">✓ 전체</td>
+              <td class="check">✓ 전체</td>
             </tr>
             <tr>
               <td>녹화 매크로</td>
               <td class="check">✓</td>
+              <td style="background: rgba(0, 113, 227, 0.05);" class="check">✓</td>
               <td class="check">✓</td>
-              <td class="check plan-pro">✓</td>
             </tr>
             <tr>
               <td>스케줄 예약</td>
               <td class="check">✓</td>
+              <td style="background: rgba(0, 113, 227, 0.05);" class="check">✓</td>
               <td class="check">✓</td>
-              <td class="check plan-pro">✓</td>
             </tr>
             <tr>
-              <td>지원</td>
-              <td>-</td>
-              <td>DM 지원</td>
-              <td class="plan-pro">사용자 서버 초대</td>
+              <td>기술 지원</td>
+              <td style="color: var(--text-muted);">❌ 없음</td>
+              <td style="background: rgba(0, 113, 227, 0.05);"><strong>1:1 DM</strong></td>
+              <td>전용 서버</td>
             </tr>
             <tr>
-              <td>신기능 조기 액세스</td>
+              <td>베타 기능 액세스</td>
               <td>-</td>
-              <td>-</td>
-              <td class="check plan-pro">✓</td>
+              <td style="background: rgba(0, 113, 227, 0.05);">-</td>
+              <td class="check">✓</td>
+            </tr>
+            <tr>
+              <td><strong>월 비용</strong></td>
+              <td>₩0</td>
+              <td style="background: rgba(0, 113, 227, 0.1);"><strong style="color: var(--accent);">₩11,800</strong><br><small style="color: var(--text-muted);">하루 ₩393</small></td>
+              <td>₩21,800</td>
             </tr>
           </tbody>
         </table>
@@ -1359,264 +1337,12 @@
       <div class="footer-section">
         <h4>법적 고지</h4>
         <ul>
-         <li><a href="#terms" onclick="return toggleTerms(event)">이용약관</a></li>
+          <li><a href="#">이용약관</a></li>
           <li><a href="#">개인정보처리방침</a></li>
           <li><a href="#">환불 정책</a></li>
         </ul>
       </div>
     </div>
-
-     <div class="legal-details" id="terms" aria-hidden="true">
-      <div class="legal-card">
-        <pre class="legal-pre">유니봇(UniBot) 개인/비상업용 이용 허가서
-
-  중요: 이 문서는 일반 정보 제공 목적의 템플릿 형태로 제공됩니다. 특정 상황에 대한 법률 자문이 아니며,
-  필요 시 대한민국 변호사/전문가의 검토를 권장합니다.
-
-  Copyright (c) 2025 U-niBot
-  All rights reserved.
-
-  본 소프트웨어(소스코드, 실행파일, 리소스, 문서 등 일체, 이하 “본 소프트웨어”)는 저작권법 및 관련 법령에 의해
-  보호됩니다. 본 허가서는 “개인/비상업적 사용”에 한하여 제한적으로 사용을 허락합니다.
-
-  1) 허용 범위(개인/비상업적 사용)
-    - 개인이 자신의 PC에서 비상업적 목적으로 본 소프트웨어를 실행/사용하는 행위
-
-  2) 금지 사항(명시적 금지)
-    아래 행위는 사전 서면 허가 없이 금지됩니다.
-    - 상업적 이용(유료 판매, 유료/광고 기반 배포, 서비스 제공, 업무/영업 목적 사용 포함)
-    - 재배포(소스/바이너리/리소스/문서의 전체 또는 일부를 타인에게 제공/업로드/공유하는 행위)
-    - 무단 수정/변형/역공학/리버스엔지니어링/디컴파일/디스어셈블 및 파생저작물(derivative works) 제작
-    - 본 소프트웨어의 일부 또는 전부를 사용하여 경쟁/대체 제품 또는 유사 서비스 제공
-    - 라이선스 검증/제한 기능의 우회, 무력화, 변조 시도
-
-  3) 권리 귀속
-    - 본 소프트웨어에 대한 저작권 및 기타 권리는 전적으로 저작권자에게 귀속됩니다.
-    - 본 허가서는 소유권 이전이 아닌, 제한적 이용 허가입니다.
-
-  4) 종료
-    - 위 금지 사항을 위반하거나 본 허가서 조건을 준수하지 않는 경우, 본 허가서는 즉시 자동 종료될 수 있으며
-      사용자는 즉시 사용을 중단하고 보유한 사본을 삭제해야 합니다.
-
-  5) 보증의 부인 및 책임 제한
-    - 본 소프트웨어는 “있는 그대로(AS IS)” 제공되며, 상품성/특정 목적 적합성/비침해 등에 대한 어떠한 보증도
-      제공하지 않습니다.
-    - 저작권자는 본 소프트웨어의 사용 또는 사용 불능으로 인해 발생하는 손해에 대해, 관련 법령이 허용하는 범위 내에서
-      책임을 지지 않습니다.
-
-  6) 준거법 및 관할
-    - 본 허가서는 대한민국 법률을 준거법으로 합니다.
-    - 분쟁이 발생할 경우, 관련 법령이 허용하는 범위 내에서 대한민국 법원에 의해 해결될 수 있습니다.
-
-  7) 법적 책임에 관한 고지
-    - 본 소프트웨어를 무단 복제/배포/상업적 이용/무단 수정하는 행위는 대한민국 저작권법 등 관련 법령에 따라
-      민사상 손해배상 책임 및/또는 형사상 책임이 발생할 수 있습니다(구체적 성립 여부는 사안에 따라 달라질 수 있음).
-
-  연락/허가 요청: GitHub 저장소 이슈 또는 저작권자가 지정한 채널
-
-                        Apache License
-                    Version 2.0, January 2004
-                  http://www.apache.org/licenses/
-
-    TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
-
-    1. Definitions.
-
-      "License" shall mean the terms and conditions for use, reproduction,
-      and distribution as defined by Sections 1 through 9 of this document.
-
-      "Licensor" shall mean the copyright owner or entity authorized by
-      the copyright owner that is granting the License.
-
-      "Legal Entity" shall mean the union of the acting entity and all
-      other entities that control, are controlled by, or are under common
-      control with that entity. For the purposes of this definition,
-      "control" means (i) the power, direct or indirect, to cause the
-      direction or management of such entity, whether by contract or
-      otherwise, or (ii) ownership of fifty percent (50%) or more of the
-      outstanding shares, or (iii) beneficial ownership of such entity.
-
-      "You" (or "Your") shall mean an individual or Legal Entity
-      exercising permissions granted by this License.
-
-      "Source" form shall mean the preferred form for making modifications,
-      including but not limited to software source code, documentation
-      source, and configuration files.
-
-      "Object" form shall mean any form resulting from mechanical
-      transformation or translation of a Source form, including but
-      not limited to compiled object code, generated documentation,
-      and conversions to other media types.
-
-      "Work" shall mean the work of authorship, whether in Source or
-      Object form, made available under the License, as indicated by a
-      copyright notice that is included in or attached to the work
-      (an example is provided in the Appendix below).
-
-      "Derivative Works" shall mean any work, whether in Source or Object
-      form, that is based on (or derived from) the Work and for which the
-      editorial revisions, annotations, elaborations, or other modifications
-      represent, as a whole, an original work of authorship. For the purposes
-      of this License, Derivative Works shall not include works that remain
-      separable from, or merely link (or bind by name) to the interfaces of,
-      the Work and Derivative Works thereof.
-
-      "Contribution" shall mean any work of authorship, including
-      the original version of the Work and any modifications or additions
-      to that Work or Derivative Works thereof, that is intentionally
-      submitted to Licensor for inclusion in the Work by the copyright owner
-      or by an individual or Legal Entity authorized to submit on behalf of
-      the copyright owner. For the purposes of this definition, "submitted"
-      means any form of electronic, verbal, or written communication sent
-      to the Licensor or its representatives, including but not limited to
-      communication on electronic mailing lists, source code control systems,
-      and issue tracking systems that are managed by, or on behalf of, the
-      Licensor for the purpose of discussing and improving the Work, but
-      excluding communication that is conspicuously marked or otherwise
-      designated in writing by the copyright owner as "Not a Contribution."
-
-      "Contributor" shall mean Licensor and any individual or Legal Entity
-      on behalf of whom a Contribution has been received by Licensor and
-      subsequently incorporated within the Work.
-
-    2. Grant of Copyright License. Subject to the terms and conditions of
-      this License, each Contributor hereby grants to You a perpetual,
-      worldwide, non-exclusive, no-charge, royalty-free, irrevocable
-      copyright license to reproduce, prepare Derivative Works of,
-      publicly display, publicly perform, sublicense, and distribute the
-      Work and such Derivative Works in Source or Object form.
-
-    3. Grant of Patent License. Subject to the terms and conditions of
-      this License, each Contributor hereby grants to You a perpetual,
-      worldwide, non-exclusive, no-charge, royalty-free, irrevocable
-      (except as stated in this section) patent license to make, have made,
-      use, offer to sell, sell, import, and otherwise transfer the Work,
-      where such license applies only to those patent claims licensable
-      by such Contributor that are necessarily infringed by their
-      Contribution(s) alone or by combination of their Contribution(s)
-      with the Work to which such Contribution(s) was submitted. If You
-      institute patent litigation against any entity (including a
-      cross-claim or counterclaim in a lawsuit) alleging that the Work
-      or a Contribution incorporated within the Work constitutes direct
-      or contributory patent infringement, then any patent licenses
-      granted to You under this License for that Work shall terminate
-      as of the date such litigation is filed.
-
-    4. Redistribution. You may reproduce and distribute copies of the
-      Work or Derivative Works thereof in any medium, with or without
-      modifications, and in Source or Object form, provided that You
-      meet the following conditions:
-
-      (a) You must give any other recipients of the Work or
-         Derivative Works a copy of this License; and
-
-      (b) You must cause any modified files to carry prominent notices
-         stating that You changed the files; and
-
-      (c) You must retain, in the Source form of any Derivative Works
-         that You distribute, all copyright, patent, trademark, and
-         attribution notices from the Source form of the Work,
-         excluding those notices that do not pertain to any part of
-         the Derivative Works; and
-
-      (d) If the Work includes a "NOTICE" text file as part of its
-         distribution, then any Derivative Works that You distribute must
-         include a readable copy of the attribution notices contained
-         within such NOTICE file, excluding those notices that do not
-         pertain to any part of the Derivative Works, in at least one
-         of the following places: within a NOTICE text file distributed
-         as part of the Derivative Works; within the Source form or
-         documentation, if provided along with the Derivative Works; or,
-         within a display generated by the Derivative Works, if and
-         wherever such third-party notices normally appear. The contents
-         of the NOTICE file are for informational purposes only and
-         do not modify the License. You may add Your own attribution
-         notices within Derivative Works that You distribute, alongside
-         or as an addendum to the NOTICE text from the Work, provided
-         that such additional attribution notices cannot be construed
-         as modifying the License.
-
-      You may add Your own copyright statement to Your modifications and
-      may provide additional or different license terms and conditions
-      for use, reproduction, or distribution of Your modifications, or
-      for any such Derivative Works as a whole, provided Your use,
-      reproduction, and distribution of the Work otherwise complies with
-      the conditions stated in this License.
-
-    5. Submission of Contributions. Unless You explicitly state otherwise,
-      any Contribution intentionally submitted for inclusion in the Work
-      by You to the Licensor shall be under the terms and conditions of
-      this License, without any additional terms or conditions.
-      Notwithstanding the above, nothing herein shall supersede or modify
-      the terms of any separate license agreement you may have executed
-      with Licensor regarding such Contributions.
-
-    6. Trademarks. This License does not grant permission to use the trade
-      names, trademarks, service marks, or product names of the Licensor,
-      except as required for reasonable and customary use in describing the
-      origin of the Work and reproducing the content of the NOTICE file.
-
-    7. Disclaimer of Warranty. Unless required by applicable law or
-      agreed to in writing, Licensor provides the Work (and each
-      Contributor provides its Contributions) on an "AS IS" BASIS,
-      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
-      implied, including, without limitation, any warranties or conditions
-      of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A
-      PARTICULAR PURPOSE. You are solely responsible for determining the
-      appropriateness of using or redistributing the Work and assume any
-      risks associated with Your exercise of permissions under this License.
-
-    8. Limitation of Liability. In no event and under no legal theory,
-      whether in tort (including negligence), contract, or otherwise,
-      unless required by applicable law (such as deliberate and grossly
-      negligent acts) or agreed to in writing, shall any Contributor be
-      liable to You for damages, including any direct, indirect, special,
-      incidental, or consequential damages of any character arising as a
-      result of this License or out of the use or inability to use the
-      Work (including but not limited to damages for loss of goodwill,
-      work stoppage, computer failure or malfunction, or any and all
-      other commercial damages or losses), even if such Contributor
-      has been advised of the possibility of such damages.
-
-    9. Accepting Warranty or Additional Liability. While redistributing
-      the Work or Derivative Works thereof, You may choose to offer,
-      and charge a fee for, acceptance of support, warranty, indemnity,
-      or other liability obligations and/or rights consistent with this
-      License. However, in accepting such obligations, You may act only
-      on Your own behalf and on Your sole responsibility, not on behalf
-      of any other Contributor, and only if You agree to indemnify,
-      defend, and hold each Contributor harmless for any liability
-      incurred by, or claims asserted against, such Contributor by reason
-      of your accepting any such warranty or additional liability.
-
-    END OF TERMS AND CONDITIONS
-
-    APPENDIX: How to apply the Apache License to your work.
-
-      To apply the Apache License to your work, attach the following
-      boilerplate notice, with the fields enclosed by brackets "[]"
-      replaced with your own identifying information. (Don't include
-      the brackets!)  The text should be enclosed in the appropriate
-      comment syntax for the file format. We also recommend that a
-      file or class name and description of purpose be included on the
-      same "printed page" as the copyright notice for easier
-      identification within third-party archives.
-
-    Copyright [yyyy] [name of copyright owner]
-
-    Licensed under the Apache License, Version 2.0 (the "License");
-    you may not use this file except in compliance with the License.
-    You may obtain a copy of the License at
-
-       http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing, software
-    distributed under the License is distributed on an "AS IS" BASIS,
-    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-    See the License for the specific language governing permissions and
-    limitations under the License.</pre>
-      </div>
-     </div>
     <div class="footer-bottom">
       <p>© 2025 UniBot. All rights reserved.</p>
       <div class="footer-links">
@@ -1676,29 +1402,6 @@
         }
       });
     });
-
-    function toggleTerms(e) {
-      if (e) {
-        e.preventDefault();
-        if (typeof e.stopImmediatePropagation === 'function') {
-          e.stopImmediatePropagation();
-        }
-        if (typeof e.stopPropagation === 'function') {
-          e.stopPropagation();
-        }
-      }
-
-      const termsEl = document.getElementById('terms');
-      if (!termsEl) return false;
-
-      termsEl.classList.toggle('active');
-      const isActive = termsEl.classList.contains('active');
-      termsEl.setAttribute('aria-hidden', String(!isActive));
-      if (isActive) {
-        termsEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-      return false;
-    }
 
     // Lightbox
     function openLightbox(el) {
