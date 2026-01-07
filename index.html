@@ -3,57 +3,57 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>UniBot - 스마트 게임 자동화</title>
+  <title>UniBot - 게임 자동화의 새로운 기준</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+KR:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+KR:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-primary: #ffffff;
-      --bg-secondary: #f5f5f7;
-      --bg-card: rgba(255, 255, 255, 0.7);
-      --text-primary: #1d1d1f;
+      --bg-primary: #000000;
+      --bg-secondary: #0a0a0a;
+      --bg-tertiary: #111111;
+      --text-primary: #f5f5f7;
       --text-secondary: #86868b;
       --text-muted: #6e6e73;
+      --accent: #2997ff;
+      --accent-purple: #bf5af2;
+      --accent-pink: #ff375f;
+      --accent-orange: #ff9f0a;
+      --accent-green: #30d158;
+      --gradient-blue: linear-gradient(135deg, #2997ff 0%, #5856d6 100%);
+      --gradient-purple: linear-gradient(135deg, #bf5af2 0%, #5856d6 100%);
+      --gradient-premium: linear-gradient(135deg, #ffd60a 0%, #ff9f0a 50%, #ff375f 100%);
+      --border: rgba(255,255,255,0.08);
+      --glass: rgba(255,255,255,0.03);
+      --nav-bg: rgba(0, 0, 0, 0.8);
+    }
+
+    /* Light Mode */
+    :root.light {
+      --bg-primary: #ffffff;
+      --bg-secondary: #f5f5f7;
+      --bg-tertiary: #e8e8ed;
+      --text-primary: #1d1d1f;
+      --text-secondary: #6e6e73;
+      --text-muted: #86868b;
       --accent: #0071e3;
-      --accent-hover: #0077ed;
-      --gradient-start: #7928ca;
-      --gradient-end: #ff0080;
+      --accent-purple: #a855f7;
+      --accent-pink: #ec4899;
+      --accent-orange: #f97316;
+      --accent-green: #22c55e;
+      --gradient-blue: linear-gradient(135deg, #0071e3 0%, #6366f1 100%);
+      --gradient-purple: linear-gradient(135deg, #a855f7 0%, #6366f1 100%);
+      --gradient-premium: linear-gradient(135deg, #fbbf24 0%, #f97316 50%, #ef4444 100%);
       --border: rgba(0,0,0,0.08);
-      --shadow: 0 4px 24px rgba(0,0,0,0.04);
-      --shadow-lg: 0 20px 40px rgba(0,0,0,0.08);
-      --card-shadow: 0 2px 12px rgba(0,0,0,0.04);
-      --glass-border: rgba(255, 255, 255, 0.5);
+      --glass: rgba(0,0,0,0.03);
+      --nav-bg: rgba(255, 255, 255, 0.8);
     }
 
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --bg-primary: #000000;
-        --bg-secondary: #111111;
-        --bg-card: rgba(28, 28, 30, 0.6);
-        --text-primary: #f5f5f7;
-        --text-secondary: #a1a1a6;
-        --text-muted: #86868b;
-        --border: rgba(255,255,255,0.1);
-        --shadow: 0 4px 24px rgba(0,0,0,0.4);
-        --shadow-lg: 0 20px 40px rgba(0,0,0,0.6);
-        --card-shadow: 0 2px 12px rgba(0,0,0,0.3);
-        --glass-border: rgba(255, 255, 255, 0.1);
-      }
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    
     body {
-      font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans KR', sans-serif;
+      font-family: 'Inter', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
       background: var(--bg-primary);
       color: var(--text-primary);
       line-height: 1.5;
@@ -61,82 +61,65 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* Navigation */
+    /* === Scroll Progress Bar === */
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: var(--gradient-blue);
+      z-index: 10000;
+      transition: width 0.1s;
+    }
+
+    /* === Navigation === */
     nav {
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
       z-index: 1000;
-      background: rgba(255,255,255,0.8);
+      background: var(--nav-bg);
       backdrop-filter: saturate(180%) blur(20px);
       -webkit-backdrop-filter: saturate(180%) blur(20px);
       border-bottom: 1px solid var(--border);
-      transition: background 0.3s;
-    }
-
-    @media (prefers-color-scheme: dark) {
-      nav {
-        background: rgba(0, 0, 0, 0.8);
-      }
     }
 
     .nav-container {
-      max-width: 1200px;
+      max-width: 1024px;
       margin: 0 auto;
-      padding: 0 24px;
-      height: 52px;
+      padding: 0 22px;
+      height: 48px;
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
 
     .logo {
-      font-size: 20px;
+      font-size: 21px;
       font-weight: 700;
-      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      color: var(--text-primary);
       letter-spacing: -0.02em;
     }
 
     .nav-links {
       display: flex;
-      gap: 32px;
+      gap: 28px;
       list-style: none;
     }
 
     .nav-links a {
-      color: var(--text-primary);
+      color: var(--text-secondary);
       text-decoration: none;
-      font-size: 14px;
-      font-weight: 500;
-      transition: color 0.2s;
-      opacity: 0.8;
+      font-size: 12px;
+      font-weight: 400;
+      transition: color 0.3s;
     }
 
-    .nav-links a:hover {
-      color: var(--accent);
-      opacity: 1;
-    }
+    .nav-links a:hover { color: var(--text-primary); }
 
-    .nav-cta {
-      background: var(--accent);
-      color: white !important;
-      padding: 8px 18px;
-      border-radius: 20px;
-      font-weight: 600;
-      opacity: 1 !important;
-      transition: transform 0.2s, background 0.2s;
-    }
-
-    .nav-cta:hover {
-      background: var(--accent-hover);
-      transform: scale(1.05);
-    }
-
-    /* Hero Section */
+    /* === Hero Section - Full Screen === */
     .hero {
       min-height: 100vh;
       display: flex;
@@ -144,484 +127,641 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 120px 24px 80px;
-      background: var(--bg-primary);
+      padding: 100px 24px 60px;
       position: relative;
       overflow: hidden;
     }
 
-    .hero::before {
-      content: '';
+    .hero-bg {
       position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle at 30% 20%, rgba(121, 40, 202, 0.15) 0%, transparent 40%),
-                  radial-gradient(circle at 70% 60%, rgba(255, 0, 128, 0.1) 0%, transparent 40%),
-                  radial-gradient(circle at 50% 50%, rgba(0, 113, 227, 0.1) 0%, transparent 60%);
-      animation: aurora 20s ease-in-out infinite alternate;
-      filter: blur(60px);
-      z-index: 0;
-    }
-
-    @keyframes aurora {
-      0% { transform: translate(0, 0) rotate(0deg) scale(1); }
-      100% { transform: translate(-5%, -5%) rotate(5deg) scale(1.1); }
+      inset: 0;
+      background: 
+        radial-gradient(ellipse 80% 50% at 50% -20%, rgba(41, 151, 255, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse 60% 40% at 70% 100%, rgba(191, 90, 242, 0.1) 0%, transparent 50%);
+      pointer-events: none;
     }
 
     .hero-content {
       position: relative;
       z-index: 1;
-      max-width: 800px;
+      max-width: 980px;
     }
 
-    .hero-badge {
+    .hero-eyebrow {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      padding: 8px 16px;
-      border-radius: 20px;
-      font-size: 13px;
+      color: var(--accent);
+      font-size: 17px;
       font-weight: 600;
-      color: var(--text-primary);
-      margin-bottom: 32px;
-      border: 1px solid var(--border);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-      animation: float 3s ease-in-out infinite;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-5px); }
-    }
-
-    .hero-badge span {
-      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      font-weight: 700;
+      margin-bottom: 12px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.8s ease forwards;
     }
 
     .hero h1 {
-      font-size: clamp(48px, 8vw, 88px);
-      font-weight: 800;
+      font-size: clamp(56px, 10vw, 96px);
+      font-weight: 700;
       letter-spacing: -0.04em;
       line-height: 1.05;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 0.8s ease 0.1s forwards;
     }
 
-    .hero h1 .gradient {
-      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      position: relative;
-      display: inline-block;
-    }
-
-    .hero p {
-      font-size: clamp(20px, 2.5vw, 24px);
-      color: var(--text-secondary);
-      max-width: 640px;
-      margin: 0 auto 48px;
+    .hero-subtitle {
+      font-size: clamp(21px, 3vw, 28px);
       font-weight: 400;
+      color: var(--text-secondary);
+      max-width: 700px;
+      margin: 0 auto 40px;
       line-height: 1.4;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.8s ease 0.2s forwards;
     }
 
-    .hero-buttons {
+    .hero-cta {
       display: flex;
-      gap: 16px;
+      gap: 20px;
       justify-content: center;
       flex-wrap: wrap;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.8s ease 0.3s forwards;
     }
 
-    .btn {
-      padding: 16px 36px;
-      border-radius: 30px;
-      font-size: 17px;
-      font-weight: 600;
+    .hero-cta a {
+      font-size: 21px;
+      font-weight: 400;
       text-decoration: none;
-      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
       display: inline-flex;
       align-items: center;
+      gap: 6px;
+      transition: all 0.3s;
+    }
+
+    .hero-cta a.primary { color: var(--accent); }
+    .hero-cta a.primary:hover { text-decoration: underline; }
+    .hero-cta a.secondary { color: var(--text-secondary); }
+    .hero-cta a.secondary:hover { color: var(--text-primary); }
+
+    .hero-scroll-hint {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       gap: 8px;
+      color: var(--text-muted);
+      font-size: 12px;
+      opacity: 0;
+      animation: fadeIn 1s ease 1s forwards;
+    }
+
+    .scroll-arrow {
+      width: 24px;
+      height: 24px;
+      border-right: 2px solid var(--text-muted);
+      border-bottom: 2px solid var(--text-muted);
+      transform: rotate(45deg);
+      animation: scrollBounce 2s ease-in-out infinite;
+    }
+
+    @keyframes scrollBounce {
+      0%, 100% { transform: rotate(45deg) translateY(0); opacity: 1; }
+      50% { transform: rotate(45deg) translateY(10px); opacity: 0.5; }
+    }
+
+    /* === Feature Showcase - Apple Style === */
+    .showcase {
+      padding: 0;
+      background: var(--bg-primary);
+    }
+
+    .showcase-section {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 120px 24px;
       position: relative;
       overflow: hidden;
     }
 
-    .btn-primary {
-      background: var(--accent);
-      color: white;
-      box-shadow: 0 4px 12px rgba(0, 113, 227, 0.3);
-    }
-
-    .btn-primary:hover {
-      background: var(--accent-hover);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(0, 113, 227, 0.4);
-    }
-
-    .btn-secondary {
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      color: var(--text-primary);
-      border: 1px solid var(--border);
-    }
-
-    .btn-secondary:hover {
-      background: var(--bg-card);
-      transform: translateY(-2px);
-      border-color: var(--text-secondary);
-    }
-
-    /* Features Section */
-    .features {
-      padding: 120px 24px;
+    .showcase-section:nth-child(even) {
       background: var(--bg-secondary);
-      position: relative;
     }
 
-    .section-container {
+    .showcase-container {
       max-width: 1200px;
       margin: 0 auto;
+      width: 100%;
     }
 
-    .section-header {
+    .showcase-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .showcase-section:nth-child(even) .showcase-grid {
+      direction: rtl;
+    }
+
+    .showcase-section:nth-child(even) .showcase-grid > * {
+      direction: ltr;
+    }
+
+    @media (max-width: 900px) {
+      .showcase-grid { 
+        grid-template-columns: 1fr; 
+        gap: 48px;
+        text-align: center;
+      }
+      .showcase-section:nth-child(even) .showcase-grid { direction: ltr; }
+    }
+
+    .showcase-content {
+      opacity: 0;
+      transform: translateY(60px);
+      transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .showcase-content.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .showcase-badge {
+      display: inline-block;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 16px;
+    }
+
+    .badge-new {
+      background: var(--accent-green);
+      color: #000;
+    }
+
+    .badge-premium {
+      background: var(--gradient-premium);
+      color: #000;
+    }
+
+    .showcase-content h2 {
+      font-size: clamp(40px, 5vw, 56px);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+
+    .showcase-content h2 .gradient-blue {
+      background: var(--gradient-blue);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .showcase-content h2 .gradient-purple {
+      background: var(--gradient-purple);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .showcase-content h2 .gradient-premium {
+      background: var(--gradient-premium);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .showcase-content p {
+      font-size: 17px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    .showcase-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .showcase-features li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 15px;
+      color: var(--text-secondary);
+    }
+
+    .showcase-features .icon {
+      width: 20px;
+      height: 20px;
+      background: var(--accent-green);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      flex-shrink: 0;
+    }
+
+    .showcase-visual {
+      opacity: 0;
+      transform: translateY(60px) scale(0.95);
+      transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      transition-delay: 0.1s;
+    }
+
+    .showcase-visual.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .visual-card {
+      background: var(--glass);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      aspect-ratio: 4/3;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .visual-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 50%, rgba(41, 151, 255, 0.1) 0%, transparent 70%);
+    }
+
+    .visual-icon {
+      font-size: 120px;
+      opacity: 0.9;
+      transform: scale(1);
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .showcase-section:hover .visual-icon {
+      transform: scale(1.1);
+    }
+
+    /* === Specs Grid === */
+    .specs {
+      padding: 120px 24px;
+      background: var(--bg-primary);
+    }
+
+    .specs-header {
       text-align: center;
       margin-bottom: 80px;
     }
 
-    .section-header h2 {
-      font-size: clamp(36px, 5vw, 56px);
+    .specs-header h2 {
+      font-size: clamp(40px, 5vw, 64px);
       font-weight: 700;
       letter-spacing: -0.03em;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
     }
 
-    .section-header p {
-      font-size: 20px;
+    .specs-header p {
+      font-size: 21px;
       color: var(--text-secondary);
-      max-width: 640px;
+    }
+
+    .specs-grid {
+      max-width: 1200px;
       margin: 0 auto;
-    }
-
-    .features-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 32px;
-    }
-
-    .feature-card {
-      background: var(--bg-card);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      background: var(--border);
       border-radius: 24px;
-      padding: 40px;
-      border: 1px solid var(--glass-border);
-      transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-      box-shadow: var(--card-shadow);
+      overflow: hidden;
     }
 
-    .feature-card:hover {
-      transform: translateY(-8px);
-      box-shadow: var(--shadow-lg);
-      border-color: var(--accent);
+    @media (max-width: 768px) {
+      .specs-grid { grid-template-columns: 1fr; }
     }
 
-    .feature-icon {
-      width: 64px;
-      height: 64px;
-      border-radius: 18px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 32px;
-      margin-bottom: 24px;
-      background: linear-gradient(135deg, rgba(121, 40, 202, 0.1), rgba(255, 0, 128, 0.1));
-      border: 1px solid rgba(255, 255, 255, 0.1);
+    .spec-item {
+      background: var(--bg-secondary);
+      padding: 48px 32px;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .feature-card h3 {
-      font-size: 22px;
+    .spec-item.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .spec-item:nth-child(1) { transition-delay: 0s; }
+    .spec-item:nth-child(2) { transition-delay: 0.1s; }
+    .spec-item:nth-child(3) { transition-delay: 0.2s; }
+    .spec-item:nth-child(4) { transition-delay: 0.3s; }
+    .spec-item:nth-child(5) { transition-delay: 0.4s; }
+    .spec-item:nth-child(6) { transition-delay: 0.5s; }
+
+    .spec-value {
+      font-size: 48px;
       font-weight: 700;
-      margin-bottom: 12px;
-      letter-spacing: -0.01em;
+      letter-spacing: -0.03em;
+      margin-bottom: 8px;
+      background: var(--gradient-blue);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
-    .feature-card p {
-      font-size: 16px;
+    .spec-label {
+      font-size: 14px;
       color: var(--text-secondary);
-      line-height: 1.6;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
     }
 
-    /* Pricing Section */
-    .pricing {
+    /* === Premium Section === */
+    .premium-section {
+      min-height: 100vh;
       padding: 120px 24px;
-      background: var(--bg-primary);
+      background: var(--bg-secondary);
       position: relative;
+      overflow: hidden;
     }
 
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 32px;
-      max-width: 1100px;
+    .premium-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 800px;
+      height: 400px;
+      background: radial-gradient(ellipse at center, rgba(255, 214, 10, 0.1) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .premium-header {
+      text-align: center;
+      margin-bottom: 80px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .premium-header h2 {
+      font-size: clamp(48px, 7vw, 80px);
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      margin-bottom: 16px;
+    }
+
+    .premium-header h2 span {
+      background: var(--gradient-premium);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .premium-header p {
+      font-size: 21px;
+      color: var(--text-secondary);
+    }
+
+    .pricing-cards {
+      max-width: 900px;
       margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    @media (max-width: 700px) {
+      .pricing-cards { grid-template-columns: 1fr; }
     }
 
     .pricing-card {
-      background: var(--bg-card);
-      backdrop-filter: blur(20px);
-      border-radius: 28px;
-      padding: 48px;
+      background: rgba(255,255,255,0.03);
       border: 1px solid var(--border);
-      position: relative;
-      transition: all 0.4s ease;
-      display: flex;
-      flex-direction: column;
+      border-radius: 24px;
+      padding: 40px;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .pricing-card:hover {
-      transform: translateY(-8px);
-      box-shadow: var(--shadow-lg);
+    .pricing-card.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .pricing-card.featured {
-      border: 2px solid var(--accent);
-      transform: scale(1.02);
-      box-shadow: var(--shadow);
-      z-index: 2;
+      background: linear-gradient(135deg, rgba(255, 214, 10, 0.05), rgba(255, 55, 95, 0.05));
+      border-color: rgba(255, 214, 10, 0.3);
+      transform: translateY(40px) scale(1.02);
     }
 
-    .pricing-card.featured:hover {
-      transform: scale(1.04) translateY(-8px);
-      box-shadow: var(--shadow-lg);
+    .pricing-card.featured.visible {
+      transform: translateY(0) scale(1.02);
     }
 
-    .pricing-badge {
-      position: absolute;
-      top: -14px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-      color: white;
-      padding: 8px 24px;
-      border-radius: 20px;
-      font-size: 14px;
-      font-weight: 700;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    }
-
-    .pricing-header {
-      text-align: center;
-      margin-bottom: 40px;
-      padding-bottom: 40px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .pricing-name {
+    .pricing-card h3 {
       font-size: 24px;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-
-    .pricing-desc {
-      font-size: 15px;
-      color: var(--text-secondary);
+      font-weight: 600;
       margin-bottom: 24px;
     }
 
-    .pricing-price {
+    .pricing-card.featured h3 {
+      background: var(--gradient-premium);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .price {
       font-size: 56px;
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      color: var(--text-primary);
-    }
-
-    .pricing-price span {
-      font-size: 18px;
-      font-weight: 500;
-      color: var(--text-secondary);
-    }
-
-    .pricing-annual {
-      font-size: 14px;
-      color: var(--accent);
-      margin-top: 12px;
-      font-weight: 500;
-    }
-
-    .pricing-features {
-      list-style: none;
-      margin-bottom: 40px;
-      flex-grow: 1;
-    }
-
-    .pricing-features li {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      padding: 12px 0;
-      font-size: 16px;
-      color: var(--text-primary);
-    }
-
-    .pricing-features li::before {
-      content: '✓';
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 24px;
-      height: 24px;
-      background: rgba(0,113,227,0.1);
-      color: var(--accent);
-      border-radius: 50%;
-      font-size: 14px;
-      font-weight: 800;
-      flex-shrink: 0;
-    }
-
-    .pricing-features li.disabled {
-      color: var(--text-muted);
-      opacity: 0.6;
-    }
-
-    .pricing-features li.disabled::before {
-      content: '×';
-      background: rgba(110,110,115,0.1);
-      color: var(--text-muted);
-    }
-
-    .pricing-features.all-highlight li {
       font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 8px;
     }
 
-    .pricing-features.all-highlight li::before {
-      background: rgba(0,113,227,0.18);
+    .pricing-card.featured .price {
+      background: var(--gradient-premium);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .price-period {
+      color: var(--text-secondary);
+      font-size: 15px;
+      margin-bottom: 32px;
+    }
+
+    .price-discount {
+      display: inline-block;
+      background: var(--accent-green);
+      color: #000;
+      padding: 4px 12px;
+      border-radius: 12px;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 32px;
     }
 
     .pricing-cta {
+      display: block;
       width: 100%;
-      padding: 18px;
-      border-radius: 16px;
+      padding: 16px;
+      border-radius: 14px;
       font-size: 17px;
       font-weight: 600;
-      text-align: center;
       text-decoration: none;
-      transition: all 0.3s ease;
-      display: block;
+      transition: all 0.3s;
+      cursor: pointer;
+      border: none;
+      font-family: inherit;
     }
 
-    .pricing-cta.primary {
+    .pricing-card .pricing-cta {
       background: var(--accent);
-      color: white;
-      box-shadow: 0 4px 12px rgba(0, 113, 227, 0.2);
+      color: #fff;
     }
 
-    .pricing-cta.primary:hover {
-      background: var(--accent-hover);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(0, 113, 227, 0.3);
+    .pricing-card.featured .pricing-cta {
+      background: var(--gradient-premium);
+      color: #000;
     }
 
-    .pricing-cta.secondary {
-      background: var(--bg-secondary);
-      color: var(--text-primary);
+    .pricing-cta:hover {
+      transform: scale(1.02);
     }
 
-    .pricing-cta.secondary:hover {
-      background: var(--border);
-      transform: translateY(-2px);
-    }
-
-    /* Comparison Table */
+    /* === Comparison Section === */
     .comparison {
-      padding: 80px 24px 120px;
+      padding: 120px 24px;
       background: var(--bg-primary);
     }
 
-    .comparison-table {
-      max-width: 900px;
+    .comparison-container {
+      max-width: 800px;
       margin: 0 auto;
-      overflow-x: auto;
-      border-radius: 24px;
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow);
     }
 
-    .comparison-table table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 16px;
-    }
-
-    .comparison-table th,
-    .comparison-table td {
-      padding: 20px 24px;
+    .comparison-header {
       text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .comparison-header h2 {
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .comparison-table {
+      background: var(--bg-secondary);
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .comparison-row {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
       border-bottom: 1px solid var(--border);
     }
 
-    .comparison-table th:first-child,
-    .comparison-table td:first-child {
-      text-align: left;
-      font-weight: 600;
+    .comparison-row:last-child { border-bottom: none; }
+
+    .comparison-row.header {
+      background: rgba(255,255,255,0.02);
     }
 
-    .comparison-table th {
-      font-weight: 600;
-      background: var(--bg-secondary);
-      color: var(--text-primary);
+    .comparison-cell {
+      padding: 20px 24px;
+      font-size: 15px;
     }
 
-    .comparison-table td {
+    .comparison-row.header .comparison-cell {
+      font-weight: 600;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
       color: var(--text-secondary);
     }
 
-    .comparison-table .check {
-      color: var(--accent);
-      font-weight: 800;
-      font-size: 18px;
+    .comparison-cell:nth-child(3) {
+      background: rgba(255, 214, 10, 0.03);
     }
 
-    /* FAQ Section */
+    .comparison-row.header .comparison-cell:nth-child(3) {
+      background: rgba(255, 214, 10, 0.08);
+      color: var(--accent-orange);
+    }
+
+    .check { color: var(--accent-green); font-size: 18px; }
+    .cross { color: var(--text-muted); }
+
+    /* === FAQ Section === */
     .faq {
       padding: 120px 24px;
       background: var(--bg-secondary);
     }
 
-    .faq-grid {
-      max-width: 800px;
+    .faq-container {
+      max-width: 700px;
       margin: 0 auto;
     }
 
-    .faq-item {
-      background: var(--bg-card);
-      border-radius: 20px;
-      margin-bottom: 16px;
-      border: 1px solid var(--border);
-      overflow: hidden;
-      transition: all 0.3s ease;
+    .faq-header {
+      text-align: center;
+      margin-bottom: 64px;
     }
-    
-    .faq-item:hover {
-      border-color: var(--text-secondary);
+
+    .faq-header h2 {
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .faq-item.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .faq-question {
       width: 100%;
-      padding: 28px;
-      background: none;
+      padding: 24px 0;
+      background: transparent;
       border: none;
-      text-align: left;
-      font-size: 18px;
-      font-weight: 600;
       color: var(--text-primary);
+      font-size: 17px;
+      font-weight: 600;
+      text-align: left;
       cursor: pointer;
       display: flex;
       justify-content: space-between;
@@ -631,10 +771,9 @@
 
     .faq-question::after {
       content: '+';
-      font-size: 28px;
-      font-weight: 300;
-      color: var(--text-secondary);
-      transition: transform 0.3s ease;
+      font-size: 24px;
+      color: var(--accent);
+      transition: transform 0.3s;
     }
 
     .faq-item.active .faq-question::after {
@@ -644,100 +783,112 @@
     .faq-answer {
       max-height: 0;
       overflow: hidden;
-      transition: max-height 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+      transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .faq-item.active .faq-answer {
-      max-height: 300px;
+      max-height: 200px;
     }
 
     .faq-answer p {
-      padding: 0 28px 28px;
+      padding-bottom: 24px;
       color: var(--text-secondary);
       line-height: 1.7;
-      font-size: 16px;
+      font-size: 15px;
     }
 
-    /* CTA Section */
+    /* === CTA Section === */
     .cta {
-      padding: 160px 24px;
-      background: var(--bg-primary);
+      min-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       text-align: center;
+      padding: 120px 24px;
+      background: var(--bg-primary);
       position: relative;
-      overflow: hidden;
     }
-    
+
     .cta::before {
       content: '';
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(circle at 50% 50%, rgba(0, 113, 227, 0.05) 0%, transparent 50%);
-      z-index: 0;
-    }
-
-    .cta-container {
-      max-width: 700px;
-      margin: 0 auto;
-      position: relative;
-      z-index: 1;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(41, 151, 255, 0.1) 0%, transparent 60%);
+      pointer-events: none;
     }
 
     .cta h2 {
       font-size: clamp(40px, 6vw, 64px);
-      font-weight: 800;
-      margin-bottom: 24px;
-      letter-spacing: -0.02em;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 16px;
+      position: relative;
+      z-index: 1;
     }
 
     .cta p {
-      font-size: 20px;
+      font-size: 21px;
       color: var(--text-secondary);
-      margin-bottom: 48px;
+      margin-bottom: 40px;
+      position: relative;
+      z-index: 1;
     }
 
-    /* Footer */
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 18px 36px;
+      background: var(--accent);
+      color: #fff;
+      font-size: 17px;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 30px;
+      transition: all 0.3s;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 40px rgba(41, 151, 255, 0.3);
+    }
+
+    /* === Footer === */
     footer {
-      padding: 80px 24px 40px;
       background: var(--bg-secondary);
+      padding: 48px 24px;
       border-top: 1px solid var(--border);
     }
 
     .footer-container {
-      max-width: 1200px;
+      max-width: 1024px;
       margin: 0 auto;
+    }
+
+    .footer-top {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 48px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--border);
     }
 
-    .footer-brand {
-      grid-column: span 2;
-    }
-
-    .footer-brand .logo {
-      font-size: 24px;
-      margin-bottom: 20px;
-      display: inline-block;
-    }
-
-    .footer-brand p {
-      font-size: 15px;
-      color: var(--text-secondary);
-      max-width: 320px;
-      line-height: 1.7;
+    @media (max-width: 768px) {
+      .footer-top { grid-template-columns: repeat(2, 1fr); }
     }
 
     .footer-section h4 {
-      font-size: 14px;
-      font-weight: 700;
-      margin-bottom: 20px;
-      color: var(--text-primary);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      margin-bottom: 16px;
     }
 
     .footer-section ul {
@@ -745,81 +896,37 @@
     }
 
     .footer-section ul li {
-      margin-bottom: 12px;
+      margin-bottom: 8px;
     }
 
     .footer-section ul a {
-      font-size: 14px;
-      color: var(--text-secondary);
+      color: var(--text-muted);
       text-decoration: none;
+      font-size: 12px;
       transition: color 0.2s;
     }
 
-    .footer-section ul a:hover {
-      color: var(--accent);
-    }
+    .footer-section ul a:hover { color: var(--text-primary); }
 
     .footer-bottom {
-      max-width: 1200px;
-      margin: 60px auto 0;
-      padding-top: 32px;
-      border-top: 1px solid var(--border);
       display: flex;
       justify-content: space-between;
       align-items: center;
+      padding-top: 24px;
       flex-wrap: wrap;
-      gap: 20px;
+      gap: 16px;
     }
 
     .footer-bottom p {
-      font-size: 13px;
       color: var(--text-muted);
+      font-size: 12px;
     }
 
-    .footer-links {
-      display: flex;
-      gap: 24px;
-    }
-
-    .footer-links a {
-      font-size: 13px;
-      color: var(--text-muted);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .footer-links a:hover {
-      color: var(--accent);
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      .nav-links {
-        display: none;
-      }
-
-      .pricing-card.featured {
-        transform: none;
-      }
-
-      .pricing-card.featured:hover {
-        transform: translateY(-8px);
-      }
-
-      .footer-brand {
-        grid-column: span 1;
-      }
-      
-      .hero h1 {
-        font-size: 48px;
-      }
-    }
-
-    /* Animations */
+    /* === Animations === */
     @keyframes fadeInUp {
       from {
         opacity: 0;
-        transform: translateY(40px);
+        transform: translateY(20px);
       }
       to {
         opacity: 1;
@@ -827,612 +934,986 @@
       }
     }
 
-    .animate {
-      animation: fadeInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-      opacity: 0;
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
 
-    .delay-1 { animation-delay: 0.1s; }
-    .delay-2 { animation-delay: 0.2s; }
-    .delay-3 { animation-delay: 0.3s; }
-    .delay-4 { animation-delay: 0.4s; }
+    /* === Mobile Navigation === */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+    }
 
-    /* Screenshots Gallery */
+    /* === Smooth Scroll Reveal Utility === */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* === Modal === */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    .modal-content {
+      background: var(--bg-tertiary);
+      border-radius: 20px;
+      max-width: 800px;
+      width: 100%;
+      max-height: 80vh;
+      overflow-y: auto;
+      border: 1px solid var(--border);
+    }
+
+    .modal-header {
+      padding: 1.5rem 2rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      background: var(--bg-tertiary);
+    }
+
+    .modal-header h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+
+    .modal-close {
+      background: none;
+      border: none;
+      color: var(--text-secondary);
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 0.5rem;
+      transition: color 0.3s;
+    }
+
+    .modal-close:hover {
+      color: var(--text-primary);
+    }
+
+    .modal-body {
+      padding: 2rem;
+    }
+
+    .modal-body pre {
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      font-family: 'Inter', 'Noto Sans KR', sans-serif;
+      font-size: 0.9rem;
+      line-height: 1.8;
+      color: var(--text-secondary);
+    }
+
+    .modal-body h4 {
+      color: var(--text-primary);
+      margin: 1.5rem 0 1rem;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .modal-body h4:first-child {
+      margin-top: 0;
+    }
+
+    .modal-body p, .modal-body ul {
+      color: var(--text-secondary);
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+
+    .modal-body ul {
+      padding-left: 1.5rem;
+    }
+
+    .modal-body ul li {
+      margin-bottom: 0.5rem;
+    }
+
+    /* === Screenshots Gallery === */
     .screenshots {
       padding: 120px 24px;
-      background: var(--bg-primary);
+      background: var(--bg-secondary);
     }
 
-    .screenshots-grid {
+    .screenshots-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .screenshots-header h2 {
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 16px;
+    }
+
+    .screenshots-header p {
+      color: var(--text-secondary);
+      font-size: 17px;
+    }
+
+    .screenshot-grid {
+      max-width: 1200px;
+      margin: 0 auto;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
       gap: 24px;
-      margin-top: 64px;
     }
 
     .screenshot-item {
-      border-radius: 20px;
+      background: var(--bg-tertiary);
+      border-radius: 16px;
       overflow: hidden;
       border: 1px solid var(--border);
-      transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
       cursor: pointer;
-      position: relative;
-      box-shadow: var(--card-shadow);
     }
 
     .screenshot-item:hover {
       transform: translateY(-8px) scale(1.02);
-      box-shadow: var(--shadow-lg);
-      z-index: 10;
+      border-color: var(--accent);
+      box-shadow: 0 20px 40px rgba(41, 151, 255, 0.15);
     }
 
     .screenshot-item img {
       width: 100%;
       height: auto;
       display: block;
-      transition: transform 0.4s ease;
-    }
-    
-    .screenshot-item:hover img {
-      transform: scale(1.05);
     }
 
-    .screenshot-item .caption {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      padding: 20px;
-      background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
-      color: white;
+    .screenshot-caption {
+      padding: 16px 20px;
+      text-align: center;
+    }
+
+    .screenshot-caption h4 {
       font-size: 15px;
       font-weight: 600;
-      opacity: 0;
-      transform: translateY(10px);
-      transition: all 0.3s ease;
-    }
-    
-    .screenshot-item:hover .caption {
-      opacity: 1;
-      transform: translateY(0);
+      margin-bottom: 4px;
     }
 
-    /* Lightbox */
+    .screenshot-caption p {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* Image Lightbox */
     .lightbox {
       display: none;
       position: fixed;
       top: 0;
       left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(0,0,0,0.9);
-      backdrop-filter: blur(10px);
-      z-index: 2000;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.95);
+      z-index: 3000;
       align-items: center;
       justify-content: center;
-      padding: 40px;
-      opacity: 0;
-      transition: opacity 0.3s ease;
+      padding: 2rem;
+      cursor: zoom-out;
     }
 
     .lightbox.active {
       display: flex;
-      opacity: 1;
     }
 
     .lightbox img {
-      max-width: 100%;
-      max-height: 90vh;
-      border-radius: 16px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-      transform: scale(0.95);
-      transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
-    }
-    
-    .lightbox.active img {
-      transform: scale(1);
+      max-width: 95%;
+      max-height: 95%;
+      object-fit: contain;
+      border-radius: 12px;
+      box-shadow: 0 25px 80px rgba(0, 0, 0, 0.5);
     }
 
-    .lightbox-close {
-      position: absolute;
-      top: 32px;
-      right: 32px;
-      background: rgba(255, 255, 255, 0.1);
-      border: none;
-      color: white;
-      font-size: 32px;
-      cursor: pointer;
-      width: 48px;
-      height: 48px;
+    /* === Theme Toggle === */
+    .theme-toggle {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 1001;
+      width: 56px;
+      height: 56px;
       border-radius: 50%;
+      border: none;
+      background: var(--bg-tertiary);
+      color: var(--text-primary);
+      font-size: 24px;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: all 0.2s;
+      border: 1px solid var(--border);
     }
 
-    .lightbox-close:hover {
-      background: rgba(255, 255, 255, 0.2);
-      transform: rotate(90deg);
+    .theme-toggle:hover {
+      transform: scale(1.1) rotate(15deg);
+      box-shadow: 0 8px 30px rgba(41, 151, 255, 0.3);
+    }
+
+    .theme-toggle .icon-sun,
+    .theme-toggle .icon-moon {
+      position: absolute;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .theme-toggle .icon-sun {
+      opacity: 0;
+      transform: scale(0.5) rotate(-90deg);
+    }
+
+    .theme-toggle .icon-moon {
+      opacity: 1;
+      transform: scale(1) rotate(0deg);
+    }
+
+    :root.light .theme-toggle .icon-sun {
+      opacity: 1;
+      transform: scale(1) rotate(0deg);
+    }
+
+    :root.light .theme-toggle .icon-moon {
+      opacity: 0;
+      transform: scale(0.5) rotate(90deg);
+    }
+
+    /* Screenshot transition for theme */
+    .screenshot-item img {
+      transition: opacity 0.3s ease;
+    }
+
+    /* Light mode adjustments */
+    :root.light .hero-bg {
+      background:
+        radial-gradient(ellipse 80% 50% at 50% -20%, rgba(0, 113, 227, 0.1) 0%, transparent 50%),
+        radial-gradient(ellipse 60% 40% at 70% 100%, rgba(168, 85, 247, 0.08) 0%, transparent 50%);
+    }
+
+    :root.light .lightbox {
+      background: rgba(255, 255, 255, 0.95);
+    }
+
+    :root.light .screenshot-item:hover {
+      box-shadow: 0 20px 40px rgba(0, 113, 227, 0.15);
     }
   </style>
 </head>
 <body>
+  <!-- Scroll Progress -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- Theme Toggle Button -->
+  <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="테마 전환">
+    <span class="icon-sun">☀️</span>
+    <span class="icon-moon">🌙</span>
+  </button>
+
   <!-- Navigation -->
   <nav>
     <div class="nav-container">
-      <div class="logo">🎮 UniBot</div>
+      <span class="logo">UniBot</span>
       <ul class="nav-links">
         <li><a href="#features">기능</a></li>
         <li><a href="#screenshots">스크린샷</a></li>
-        <li><a href="#pricing">요금제</a></li>
+        <li><a href="#premium">프리미엄</a></li>
         <li><a href="#faq">FAQ</a></li>
-        <li><a href="#download" class="nav-cta">다운로드</a></li>
+        <li><a href="https://github.com/U-niBot/UniBot/releases/latest/download/UniBot-win64.zip">다운로드</a></li>
       </ul>
     </div>
   </nav>
 
   <!-- Hero Section -->
   <section class="hero">
+    <div class="hero-bg"></div>
     <div class="hero-content">
-      <div class="hero-badge animate">
-        <span>✨ NEW</span> v2.0 출시 — 더 빠르고, 더 정확하게
+      <div class="hero-eyebrow">
+        🎉 커뮤니티 프리셋 공유 기능 출시
       </div>
-      <h1 class="animate delay-1">
-        게임 자동화의<br>
-        <span class="gradient">새로운 기준</span>
-      </h1>
-      <p class="animate delay-2">
-        UniBot은 MuMu 에뮬레이터를 위한 지능형 게임 자동화 솔루션입니다.<br>
-        이미지 인식, 스마트 매크로, 스케줄링까지 하나로.
+      <h1>게임 자동화의<br>새로운 기준.</h1>
+      <p class="hero-subtitle">
+        시각 인식 기반 매크로. 반복 작업에서 벗어나세요.
       </p>
-      <div class="hero-buttons animate delay-3">
-        <a href="#download" class="btn btn-primary">
-          무료로 시작하기 →
+      <div class="hero-cta">
+        <a href="https://github.com/U-niBot/UniBot/releases/latest/download/UniBot-win64.zip" class="primary">
+          다운로드 <span>→</span>
         </a>
-        <a href="#features" class="btn btn-secondary">
-          자세히 알아보기
+        <a href="#features" class="secondary">
+          더 알아보기 <span>→</span>
         </a>
       </div>
     </div>
-  </section>
-
-  <!-- Features Section -->
-  <section class="features" id="features">
-    <div class="section-container">
-      <div class="section-header">
-        <h2>강력한 기능, 쉬운 사용</h2>
-        <p>복잡한 설정 없이 바로 시작하세요. UniBot이 모든 것을 처리합니다.</p>
-      </div>
-      <div class="features-grid">
-        <div class="feature-card">
-          <div class="feature-icon">🖼️</div>
-          <h3>이미지 템플릿 매칭</h3>
-          <p>OpenCV 기반의 정밀한 이미지 인식으로 화면 상태를 정확하게 감지하고 자동으로 반응합니다.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">🤖</div>
-          <h3>스마트 자동화 규칙</h3>
-          <p>조건부 로직, 반복, 분기를 지원하는 비주얼 에디터로 복잡한 자동화도 쉽게 구성하세요.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">⏰</div>
-          <h3>스케줄 예약 실행</h3>
-          <p>특정 시간에 자동으로 작업을 시작하고, 종료 조건을 설정하여 완전 무인 운영이 가능합니다.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">🎯</div>
-          <h3>블록 기반 에디터</h3>
-          <p>드래그 앤 드롭으로 액션을 배치하고 연결하세요. 코딩 없이 복잡한 시나리오를 구현합니다.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">📹</div>
-          <h3>녹화 & 재생</h3>
-          <p>직접 플레이하며 녹화하면 그대로 매크로가 됩니다. 터치, 스와이프 모두 자동 기록됩니다.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">🎮</div>
-          <h3>MuMu & LD플레이어 지원</h3>
-          <p>MuMu와 LD플레이어 모두 완벽 지원. 여러 인스턴스를 동시에 관리하고 제어합니다.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">🎲</div>
-          <h3>완전 랜덤 타이밍</h3>
-          <p>사람처럼 자연스러운 동작을 위해 모든 터치와 대기 시간에 랜덤 딜레이가 적용됩니다.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">⚡</div>
-          <h3>GPU 가속 이미지 처리</h3>
-          <p>OpenCL 기반 GPU 가속으로 이미지 매칭이 빨라지고, 리소스 사용량은 최소화됩니다.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">🌙</div>
-          <h3>야간 모드</h3>
-          <p>눈이 편한 다크 테마를 지원합니다. 한 번 클릭으로 전체 UI가 어두운 톤으로 전환됩니다.</p>
-        </div>
-      </div>
+    <div class="hero-scroll-hint">
+      <div class="scroll-arrow"></div>
     </div>
   </section>
 
-  <!-- Screenshots Section -->
+  <!-- Feature Showcase -->
+  <section class="showcase" id="features">
+    
+    <!-- Feature 1: Visual Recognition -->
+    <div class="showcase-section">
+      <div class="showcase-container">
+        <div class="showcase-grid">
+          <div class="showcase-content">
+            <h2>
+              눈으로 보듯<br>
+              <span class="gradient-blue">화면을 인식.</span>
+            </h2>
+            <p>
+              OpenCV 기반 시각 인식으로 픽셀 좌표에 의존하지 않습니다.
+              해상도가 바뀌어도, UI가 조금 달라져도 정확하게 작동합니다.
+            </p>
+            <ul class="showcase-features">
+              <li><span class="icon">✓</span> 템플릿 매칭으로 이미지 자동 탐색</li>
+              <li><span class="icon">✓</span> OCR로 텍스트 인식</li>
+              <li><span class="icon">✓</span> 멀티스케일 매칭 지원</li>
+            </ul>
+          </div>
+          <div class="showcase-visual">
+            <div class="visual-card">
+              <span class="visual-icon">👁️</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Feature 2: Community Presets -->
+    <div class="showcase-section">
+      <div class="showcase-container">
+        <div class="showcase-grid">
+          <div class="showcase-content">
+            <span class="showcase-badge badge-new">NEW</span>
+            <h2>
+              프리셋을 공유하고<br>
+              <span class="gradient-purple">함께 성장.</span>
+            </h2>
+            <p>
+              다른 사용자가 만든 자동화 프리셋을 다운로드하세요.
+              내가 만든 프리셋을 공유하고 커뮤니티에 기여하세요.
+            </p>
+            <ul class="showcase-features">
+              <li><span class="icon">✓</span> 검색 및 필터로 원하는 프리셋 탐색</li>
+              <li><span class="icon">✓</span> 다운로드 수로 인기 프리셋 확인</li>
+              <li><span class="icon">✓</span> 버전 관리로 항상 최신 유지</li>
+            </ul>
+          </div>
+          <div class="showcase-visual">
+            <div class="visual-card">
+              <span class="visual-icon">🌐</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Feature 3: Block Editor -->
+    <div class="showcase-section">
+      <div class="showcase-container">
+        <div class="showcase-grid">
+          <div class="showcase-content">
+            <span class="showcase-badge badge-premium">Premium</span>
+            <h2>
+              코딩 없이<br>
+              <span class="gradient-premium">복잡한 로직을.</span>
+            </h2>
+            <p>
+              조건문, 반복문, 변수를 드래그 앤 드롭으로 구성하세요.
+              프로그래밍 경험 없이도 고급 자동화를 구현할 수 있습니다.
+            </p>
+            <ul class="showcase-features">
+              <li><span class="icon">✓</span> 시각적 블록 에디터</li>
+              <li><span class="icon">✓</span> 조건 분기 및 반복 로직</li>
+              <li><span class="icon">✓</span> 변수와 연산자 지원</li>
+            </ul>
+          </div>
+          <div class="showcase-visual">
+            <div class="visual-card">
+              <span class="visual-icon">🧩</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Feature 4: Multi-Emulator -->
+    <div class="showcase-section">
+      <div class="showcase-container">
+        <div class="showcase-grid">
+          <div class="showcase-content">
+            <h2>
+              모든 에뮬레이터.<br>
+              <span class="gradient-blue">하나의 도구.</span>
+            </h2>
+            <p>
+              MuMu Player, LDPlayer 등 주요 에뮬레이터를 완벽 지원.
+              DLL 캡처로 게임 감지 없이 백그라운드에서 작동합니다.
+            </p>
+            <ul class="showcase-features">
+              <li><span class="icon">✓</span> MuMu Player 12 지원</li>
+              <li><span class="icon">✓</span> LDPlayer 9 지원</li>
+              <li><span class="icon">✓</span> GDI 캡처로 PC 프로그램도 지원</li>
+            </ul>
+          </div>
+          <div class="showcase-visual">
+            <div class="visual-card">
+              <span class="visual-icon">🎮</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- Screenshots Gallery -->
   <section class="screenshots" id="screenshots">
-    <div class="section-container">
-      <div class="section-header">
-        <h2>한눈에 보는 UniBot</h2>
-        <p>깔끔한 인터페이스와 강력한 기능을 직접 확인하세요.</p>
+    <div class="screenshots-header reveal">
+      <h2>직접 눈으로 확인하세요</h2>
+      <p>직관적인 인터페이스로 누구나 쉽게</p>
+    </div>
+
+    <div class="screenshot-grid">
+      <div class="screenshot-item reveal" onclick="openLightbox(this.querySelector('img'))">
+        <img src="screenshots/main.png" data-dark="screenshots/main.png" data-light="screenshots/day-main.png" alt="메인 화면" loading="lazy" class="theme-screenshot">
+        <div class="screenshot-caption">
+          <h4>메인 화면</h4>
+          <p>에뮬레이터 연결 및 실시간 화면 캡처</p>
+        </div>
       </div>
-      <div class="screenshots-grid">
-        <div class="screenshot-item" onclick="openLightbox(this)">
-          <img src="screenshots/main.png" alt="메인 화면">
-          <div class="caption">🏠 메인 화면 - 디바이스 연결 & 제어</div>
+      <div class="screenshot-item reveal reveal-delay-1" onclick="openLightbox(this.querySelector('img'))">
+        <img src="screenshots/automation.png" data-dark="screenshots/automation.png" data-light="screenshots/day-automation.png" alt="자동화 규칙" loading="lazy" class="theme-screenshot">
+        <div class="screenshot-caption">
+          <h4>자동화 규칙</h4>
+          <p>조건/액션 기반 자동화 설정</p>
         </div>
-        <div class="screenshot-item" onclick="openLightbox(this)">
-          <img src="screenshots/automation.png" alt="자동화 규칙">
-          <div class="caption">🤖 자동화 - 규칙 기반 이미지 매칭</div>
+      </div>
+      <div class="screenshot-item reveal reveal-delay-2" onclick="openLightbox(this.querySelector('img'))">
+        <img src="screenshots/block-editor.png" data-dark="screenshots/block-editor.png" data-light="screenshots/day-block-editor.png" alt="블록 에디터" loading="lazy" class="theme-screenshot">
+        <div class="screenshot-caption">
+          <h4>블록 에디터</h4>
+          <p>시각적 시퀀스 편집</p>
         </div>
-        <div class="screenshot-item" onclick="openLightbox(this)">
-          <img src="screenshots/block-editor.png" alt="블록 에디터">
-          <div class="caption">🧩 블록 에디터 - 비주얼 시나리오 편집</div>
+      </div>
+      <div class="screenshot-item reveal" onclick="openLightbox(this.querySelector('img'))">
+        <img src="screenshots/rule-editor.png" data-dark="screenshots/rule-editor.png" data-light="screenshots/day-rule-editor.png" alt="규칙 편집기" loading="lazy" class="theme-screenshot">
+        <div class="screenshot-caption">
+          <h4>규칙 편집기</h4>
+          <p>세부 조건 및 액션 설정</p>
         </div>
-        <div class="screenshot-item" onclick="openLightbox(this)">
-          <img src="screenshots/recorder.png" alt="녹화">
-          <div class="caption">🎬 녹화 - 플레이를 그대로 매크로로</div>
+      </div>
+      <div class="screenshot-item reveal reveal-delay-1" onclick="openLightbox(this.querySelector('img'))">
+        <img src="screenshots/recorder.png" data-dark="screenshots/recorder.png" data-light="screenshots/day-recorder.png" alt="녹화 기능" loading="lazy" class="theme-screenshot">
+        <div class="screenshot-caption">
+          <h4>녹화 기능</h4>
+          <p>입력 녹화 및 재생</p>
         </div>
-        <div class="screenshot-item" onclick="openLightbox(this)">
-          <img src="screenshots/schedule.png" alt="스케줄">
-          <div class="caption">⏰ 스케줄 - 시간 기반 자동 실행</div>
-        </div>
-        <div class="screenshot-item" onclick="openLightbox(this)">
-          <img src="screenshots/rule-editor.png" alt="규칙 편집">
-          <div class="caption">⚙️ 규칙 편집 - 세밀한 액션 제어</div>
+      </div>
+      <div class="screenshot-item reveal reveal-delay-2" onclick="openLightbox(this.querySelector('img'))">
+        <img src="screenshots/schedule.png" data-dark="screenshots/schedule.png" data-light="screenshots/day-schedule.png" alt="스케줄 관리" loading="lazy" class="theme-screenshot">
+        <div class="screenshot-caption">
+          <h4>스케줄 관리</h4>
+          <p>예약 실행 설정</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Lightbox -->
-  <div class="lightbox" id="lightbox">
-    <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
-    <img src="" alt="" id="lightbox-img">
-  </div>
+  <!-- Specs Section -->
+  <section class="specs">
+    <div class="specs-header reveal">
+      <h2>숫자로 보는 UniBot</h2>
+      <p>성능과 효율성을 동시에</p>
+    </div>
 
-  <!-- Pricing Section -->
-  <section class="pricing" id="pricing">
-    <div class="section-container">
-      <div class="section-header">
-        <h2>합리적인 요금제</h2>
-        <p>5,200명 이상의 사용자가 선택한 자동화 솔루션. <span style="color: var(--accent); font-weight: 600;">신년 특가 30% 할인</span> 진행 중!</p>
+    <div class="specs-grid">
+      <div class="spec-item">
+        <div class="spec-value">60</div>
+        <div class="spec-label">FPS 화면 캡처</div>
       </div>
-      <div class="pricing-grid">
-        <!-- Free Plan -->
-        <div class="pricing-card">
-          <div class="pricing-header">
-            <div class="pricing-name">체험판</div>
-            <div class="pricing-desc">기능 맛보기용</div>
-            <div class="pricing-price">₩0<span>/영구</span></div>
-          </div>
-          <ul class="pricing-features">
-            <li>동시 실행 1개</li>
-            <li>1PC 등록</li>
-            <li class="disabled">하루 1시간 제한 ⏰</li>
-            <li>기본 템플릿 매칭</li>
-            <li class="disabled">고급 기능 잠금</li>
-            <li class="disabled">지원 없음</li>
-          </ul>
-          <a href="#download" class="pricing-cta secondary">체험하기</a>
-        </div>
-
-        <!-- Standard Plan -->
-        <div class="pricing-card featured">
-          <div class="pricing-badge">🔥 98% 선택</div>
-          <div class="pricing-header">
-            <div class="pricing-name">스탠다드</div>
-            <div class="pricing-desc">가장 인기있는 플랜</div>
-            <div style="text-decoration: line-through; color: var(--text-muted); font-size: 18px; margin-bottom: 4px;">₩16,900/월</div>
-            <div class="pricing-price">₩11,800<span>/월</span></div>
-            <div class="pricing-annual">🎁 연간 구독 시 <strong style="color: var(--accent);">₩33,600 절약</strong> → ₩108,000/년</div>
-          </div>
-          <ul class="pricing-features">
-            <li>동시 실행 3개 🚀</li>
-            <li>1PC 등록</li>
-            <li><strong>무제한</strong> 사용</li>
-            <li>고급 템플릿 매칭 ✨</li>
-            <li>블록 에디터 사용</li>
-            <li>1:1 DM 지원</li>
-          </ul>
-          <a href="https://discord.com/channels/@me/1016506446055215215" class="pricing-cta primary" target="_blank" rel="noopener" onclick="return contactDiscord(event)">지금 시작하기 →</a>
-          <p style="text-align: center; margin-top: 12px; font-size: 12px; color: var(--text-muted);">✓ 7일 환불 보장 · 언제든 해지 가능</p>
-        </div>
-
-        <!-- Pro Plan -->
-        <div class="pricing-card">
-          <div class="pricing-header">
-            <div class="pricing-name">엔터프라이즈</div>
-            <div class="pricing-desc">대규모 운영이 필요한 분</div>
-            <div style="text-decoration: line-through; color: var(--text-muted); font-size: 18px; margin-bottom: 4px;">₩31,200/월</div>
-            <div class="pricing-price">₩21,800<span>/월</span></div>
-            <div class="pricing-annual">🎁 연간 구독 시 <strong style="color: var(--accent);">₩24,000 절약</strong> → ₩237,600/년</div>
-          </div>
-          <ul class="pricing-features all-highlight">
-            <li>동시 실행 10개</li>
-            <li>10PC 등록</li>
-            <li>무제한 사용</li>
-            <li>모든 프리미엄 기능</li>
-            <li>전용 서버 초대</li>
-            <li>베타 기능 우선 제공</li>
-          </ul>
-          <a href="https://discord.com/channels/@me/1016506446055215215" class="pricing-cta secondary" target="_blank" rel="noopener" onclick="return contactDiscord(event)">문의하기</a>
-        </div>
+      <div class="spec-item">
+        <div class="spec-value">&lt;50</div>
+        <div class="spec-label">ms 입력 딜레이</div>
       </div>
-      <p style="text-align: center; margin-top: 40px; font-size: 14px; color: var(--text-muted);">
-        💬 결제 전 궁금한 점이 있으시면 부담 없이 <a href="https://discord.com/channels/@me/1016506446055215215" style="color: var(--accent);" target="_blank" rel="noopener" onclick="return contactDiscord(event)">Discord로 문의</a>하세요!
-      </p>
+      <div class="spec-item">
+        <div class="spec-value">99%</div>
+        <div class="spec-label">이미지 매칭 정확도</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-value">∞</div>
+        <div class="spec-label">커스텀 액션</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-value">24/7</div>
+        <div class="spec-label">자동 실행</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-value">0</div>
+        <div class="spec-label">코딩 필요</div>
+      </div>
     </div>
   </section>
 
-  <!-- Comparison Table -->
+  <!-- Premium Section -->
+  <section class="premium-section" id="premium">
+    <div class="premium-header reveal">
+      <h2><span>프리미엄</span>으로 더 강력하게.</h2>
+      <p>모든 제한을 해제하고 전체 기능을 경험하세요</p>
+    </div>
+
+    <div class="pricing-cards">
+      <div class="pricing-card">
+        <h3>월간</h3>
+        <div class="price">₩9,900</div>
+        <div class="price-period">30일 이용권</div>
+        <button class="pricing-cta" onclick="contactDiscord(event)">
+          시작하기
+        </button>
+      </div>
+      <div class="pricing-card featured">
+        <h3>💎 연간 (추천)</h3>
+        <div class="price">₩79,000</div>
+        <div class="price-period">365일 이용권</div>
+        <div class="price-discount">34% 할인 · 월 ₩6,583</div>
+        <button class="pricing-cta" onclick="contactDiscord(event)">
+          시작하기
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison Section -->
   <section class="comparison">
-    <div class="section-container">
-      <div class="section-header">
-        <h2>요금제 상세 비교</h2>
-        <p style="margin-top: 12px; color: var(--text-secondary);">스탠다드로 시작하는 사용자의 <strong style="color: var(--accent);">87%</strong>가 1주일 내 자동화 효율을 체감합니다</p>
+    <div class="comparison-container">
+      <div class="comparison-header reveal">
+        <h2>무료 vs 프리미엄</h2>
       </div>
-      <div class="comparison-table">
-        <table>
-          <thead>
-            <tr>
-              <th>기능</th>
-              <th>체험판</th>
-              <th style="background: rgba(0, 113, 227, 0.1);">⭐ 스탠다드</th>
-              <th>엔터프라이즈</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>동시 실행</td>
-              <td>1개</td>
-              <td style="background: rgba(0, 113, 227, 0.05);"><strong>3개</strong></td>
-              <td>10개</td>
-            </tr>
-            <tr>
-              <td>PC 등록</td>
-              <td>1대</td>
-              <td style="background: rgba(0, 113, 227, 0.05);">1대</td>
-              <td>10대</td>
-            </tr>
-            <tr>
-              <td>일일 사용 시간</td>
-              <td style="color: #ff6b6b;">1시간 😢</td>
-              <td style="background: rgba(0, 113, 227, 0.05);"><strong style="color: var(--accent);">무제한 ✓</strong></td>
-              <td>무제한</td>
-            </tr>
-            <tr>
-              <td>이미지 템플릿 매칭</td>
-              <td>기본</td>
-              <td style="background: rgba(0, 113, 227, 0.05);" class="check">✓ 고급</td>
-              <td class="check">✓ 고급</td>
-            </tr>
-            <tr>
-              <td>블록 에디터</td>
-              <td style="color: var(--text-muted);">제한적</td>
-              <td style="background: rgba(0, 113, 227, 0.05);" class="check">✓ 전체</td>
-              <td class="check">✓ 전체</td>
-            </tr>
-            <tr>
-              <td>녹화 매크로</td>
-              <td class="check">✓</td>
-              <td style="background: rgba(0, 113, 227, 0.05);" class="check">✓</td>
-              <td class="check">✓</td>
-            </tr>
-            <tr>
-              <td>스케줄 예약</td>
-              <td class="check">✓</td>
-              <td style="background: rgba(0, 113, 227, 0.05);" class="check">✓</td>
-              <td class="check">✓</td>
-            </tr>
-            <tr>
-              <td>기술 지원</td>
-              <td style="color: var(--text-muted);">❌ 없음</td>
-              <td style="background: rgba(0, 113, 227, 0.05);"><strong>1:1 DM</strong></td>
-              <td>전용 서버</td>
-            </tr>
-            <tr>
-              <td>베타 기능 액세스</td>
-              <td>-</td>
-              <td style="background: rgba(0, 113, 227, 0.05);">-</td>
-              <td class="check">✓</td>
-            </tr>
-            <tr>
-              <td><strong>월 비용</strong></td>
-              <td>₩0</td>
-              <td style="background: rgba(0, 113, 227, 0.1);"><strong style="color: var(--accent);">₩11,800</strong><br><small style="color: var(--text-muted);">하루 ₩393</small></td>
-              <td>₩21,800</td>
-            </tr>
-          </tbody>
-        </table>
+
+      <div class="comparison-table reveal">
+        <div class="comparison-row header">
+          <div class="comparison-cell">기능</div>
+          <div class="comparison-cell">무료</div>
+          <div class="comparison-cell">💎 프리미엄</div>
+        </div>
+        <div class="comparison-row">
+          <div class="comparison-cell">일일 사용 시간</div>
+          <div class="comparison-cell">1시간</div>
+          <div class="comparison-cell"><strong>무제한</strong></div>
+        </div>
+        <div class="comparison-row">
+          <div class="comparison-cell">프리셋 개수</div>
+          <div class="comparison-cell">1개</div>
+          <div class="comparison-cell"><strong>무제한</strong></div>
+        </div>
+        <div class="comparison-row">
+          <div class="comparison-cell">자동화 규칙</div>
+          <div class="comparison-cell">5개</div>
+          <div class="comparison-cell"><strong>무제한</strong></div>
+        </div>
+        <div class="comparison-row">
+          <div class="comparison-cell">커뮤니티 프리셋 열람</div>
+          <div class="comparison-cell"><span class="check">✓</span></div>
+          <div class="comparison-cell"><span class="check">✓</span></div>
+        </div>
+        <div class="comparison-row">
+          <div class="comparison-cell">커뮤니티 프리셋 다운로드</div>
+          <div class="comparison-cell"><span class="cross">—</span></div>
+          <div class="comparison-cell"><span class="check">✓</span></div>
+        </div>
+        <div class="comparison-row">
+          <div class="comparison-cell">커뮤니티 프리셋 공유</div>
+          <div class="comparison-cell"><span class="cross">—</span></div>
+          <div class="comparison-cell"><span class="check">✓</span></div>
+        </div>
+        <div class="comparison-row">
+          <div class="comparison-cell">블록 에디터</div>
+          <div class="comparison-cell"><span class="cross">—</span></div>
+          <div class="comparison-cell"><span class="check">✓</span></div>
+        </div>
+        <div class="comparison-row">
+          <div class="comparison-cell">우선 지원</div>
+          <div class="comparison-cell"><span class="cross">—</span></div>
+          <div class="comparison-cell"><span class="check">✓</span></div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- FAQ Section -->
   <section class="faq" id="faq">
-    <div class="section-container">
-      <div class="section-header">
+    <div class="faq-container">
+      <div class="faq-header reveal">
         <h2>자주 묻는 질문</h2>
       </div>
-      <div class="faq-grid">
-        <div class="faq-item">
-          <button class="faq-question">UniBot은 어떤 게임에서 사용할 수 있나요?</button>
-          <div class="faq-answer">
-            <p>UniBot은 MuMu 에뮬레이터에서 실행되는 모든 안드로이드 게임을 지원합니다. 이미지 인식 기반으로 작동하므로 특정 게임에 종속되지 않고 다양한 게임에 적용할 수 있습니다.</p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question">무료 버전의 1시간 제한은 어떻게 적용되나요?</button>
-          <div class="faq-answer">
-            <p>무료 버전은 하루(00:00 기준) 1시간까지 사용할 수 있으며, 다음 날이 되면 자동으로 리셋됩니다. 더 긴 시간 사용이 필요하다면 스탠다드 요금제로 업그레이드해 주세요.</p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question">동시 실행이란 무엇인가요?</button>
-          <div class="faq-answer">
-            <p>동시 실행은 같은 라이선스로 동시에 실행할 수 있는 프로그램 인스턴스 수를 의미합니다. 예를 들어 스탠다드 요금제는 3개의 에뮬레이터 인스턴스에서 동시에 UniBot을 실행할 수 있습니다.</p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question">PC 등록은 어떻게 작동하나요?</button>
-          <div class="faq-answer">
-            <p>라이선스는 등록된 PC에서만 사용할 수 있습니다. 무료/스탠다드는 1대, 프로는 최대 10대의 PC를 등록할 수 있습니다. PC 변경이 필요하면 고객 지원으로 문의해 주세요.</p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question">환불 정책은 어떻게 되나요?</button>
-          <div class="faq-answer">
-            <p>결제 후 1일 이내에 요청하시면 전액 환불해 드립니다. 단, 해당 기간 동안 서비스를 과도하게 사용한 경우에는 환불이 제한될 수 있습니다.</p>
-          </div>
+
+      <div class="faq-item">
+        <button class="faq-question">무료로도 사용할 수 있나요?</button>
+        <div class="faq-answer">
+          <p>네, 무료로 사용하실 수 있습니다. 무료 버전은 하루 1시간 사용, 1개 프리셋, 5개 자동화 규칙 제한이 있습니다. 커뮤니티 프리셋은 목록 열람만 가능하며, 다운로드와 공유는 프리미엄 기능입니다.</p>
         </div>
       </div>
+
+      <div class="faq-item">
+        <button class="faq-question">커뮤니티 프리셋이 뭔가요?</button>
+        <div class="faq-answer">
+          <p>다른 사용자가 만든 자동화 프리셋을 다운로드하거나, 내가 만든 프리셋을 공유할 수 있는 기능입니다. 검색과 필터링으로 원하는 프리셋을 쉽게 찾을 수 있으며, 다운로드 수를 확인할 수 있습니다.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">어떤 에뮬레이터를 지원하나요?</button>
+        <div class="faq-answer">
+          <p>MuMu Player 12, LDPlayer 9을 공식 지원합니다. MuMu Extras(DLL 캡처)를 사용하면 게임 감지 없이 백그라운드에서 작동하며, GDI 캡처로 일반 PC 프로그램도 자동화할 수 있습니다.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">결제는 어떻게 하나요?</button>
+        <div class="faq-answer">
+          <p><a href="discord://users/1016506446055215215" style="color: var(--accent);">Discord DM</a>으로 구매 문의 주세요. 결제 확인 후 라이선스 키를 발급해 드립니다.</p>
+        </div>
+      </div>
+
     </div>
   </section>
 
   <!-- CTA Section -->
-  <section class="cta" id="download">
-    <div class="cta-container">
-      <h2>지금 시작하세요</h2>
-      <p>무료 버전으로 UniBot의 모든 핵심 기능을 체험해 보세요.<br>신용카드 없이, 1분 안에 시작할 수 있습니다.</p>
-      <div class="hero-buttons">
-        <a href="https://github.com/U-niBot/UniBot/releases/latest/download/UniBot-win64.zip" class="btn btn-primary" target="_blank" rel="noopener">
-          Windows 다운로드 ↓
-        </a>
-      </div>
-      <p style="margin-top: 24px; font-size: 14px; color: var(--text-muted);">Windows 10/11 64-bit · 약 50MB</p>
-    </div>
+  <section class="cta">
+    <h2 class="reveal">지금 바로 시작하세요.</h2>
+    <p class="reveal reveal-delay-1">무료로 다운로드하고 게임 자동화의 새로운 경험을 시작하세요</p>
+    <a href="https://github.com/U-niBot/UniBot/releases/latest/download/UniBot-win64.zip" class="cta-button reveal reveal-delay-2">
+      다운로드 →
+    </a>
   </section>
 
   <!-- Footer -->
   <footer>
     <div class="footer-container">
-      <div class="footer-brand">
-        <div class="logo">🎮 UniBot</div>
-        <p>스마트한 게임 자동화 솔루션으로 더 효율적인 게임 라이프를 경험하세요.</p>
+      <div class="footer-top">
+        <div class="footer-section">
+          <h4>제품</h4>
+          <ul>
+            <li><a href="#features">기능</a></li>
+            <li><a href="#premium">프리미엄</a></li>
+            <li><a href="https://github.com/U-niBot/UniBot/releases/latest/download/UniBot-win64.zip">다운로드</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>지원</h4>
+          <ul>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="discord://users/1016506446055215215">Discord DM</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>법적</h4>
+          <ul>
+            <li><a href="#" onclick="openModal('terms'); return false;">이용약관</a></li>
+            <li><a href="#" onclick="openModal('privacy'); return false;">개인정보처리방침</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>개발</h4>
+          <ul>
+            <li><a href="https://github.com/U-niBot/UniBot" target="_blank">GitHub</a></li>
+            <li><a href="#">API 문서</a></li>
+          </ul>
+        </div>
       </div>
-      <div class="footer-section">
-        <h4>제품</h4>
-        <ul>
-          <li><a href="#features">기능</a></li>
-          <li><a href="#pricing">요금제</a></li>
-          <li><a href="#download">다운로드</a></li>
-          <li><a href="#">업데이트 로그</a></li>
-        </ul>
-      </div>
-      <div class="footer-section">
-        <h4>지원</h4>
-        <ul>
-          <li><a href="#faq">FAQ</a></li>
-          <li><a href="#">사용 가이드</a></li>
-          <li><a href="#">문의하기</a></li>
-          <li><a href="https://discord.com/channels/@me/1016506446055215215" target="_blank" rel="noopener" onclick="return contactDiscord(event)">Discord</a></li>
-        </ul>
-      </div>
-      <div class="footer-section">
-        <h4>법적 고지</h4>
-        <ul>
-          <li><a href="#">이용약관</a></li>
-          <li><a href="#">개인정보처리방침</a></li>
-          <li><a href="#">환불 정책</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>© 2025 UniBot. All rights reserved.</p>
-      <div class="footer-links">
-        <a href="#">Twitter</a>
-        <a href="#">GitHub</a>
-        <a href="https://discord.com/channels/@me/1016506446055215215" target="_blank" rel="noopener" onclick="return contactDiscord(event)">Discord</a>
+      <div class="footer-bottom">
+        <p>© 2026 UniBot. All rights reserved.</p>
+        <p>Made with ❤️ in Korea</p>
       </div>
     </div>
   </footer>
 
+  <!-- Terms Modal -->
+  <div class="modal" id="termsModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>이용약관</h3>
+        <button class="modal-close" onclick="closeModal('terms')">×</button>
+      </div>
+      <div class="modal-body">
+        <pre>유니봇(UniBot) 개인/비상업용 이용 허가서
+
+중요: 이 문서는 일반 정보 제공 목적의 템플릿 형태로 제공됩니다. 특정 상황에 대한 법률 자문이 아니며,
+필요 시 대한민국 변호사/전문가의 검토를 권장합니다.
+
+Copyright (c) 2025 UniBot
+All rights reserved.
+
+본 소프트웨어(소스코드, 실행파일, 리소스, 문서 등 일체, 이하 "본 소프트웨어")는 저작권법 및 관련 법령에 의해
+보호됩니다. 본 허가서는 "개인/비상업적 사용"에 한하여 제한적으로 사용을 허락합니다.
+
+1) 허용 범위(개인/비상업적 사용)
+   - 개인이 자신의 PC에서 비상업적 목적으로 본 소프트웨어를 실행/사용하는 행위
+
+2) 금지 사항(명시적 금지)
+   아래 행위는 사전 서면 허가 없이 금지됩니다.
+   - 상업적 이용(유료 판매, 유료/광고 기반 배포, 서비스 제공, 업무/영업 목적 사용 포함)
+   - 재배포(소스/바이너리/리소스/문서의 전체 또는 일부를 타인에게 제공/업로드/공유하는 행위)
+   - 무단 수정/변형/역공학/리버스엔지니어링/디컴파일/디스어셈블 및 파생저작물(derivative works) 제작
+   - 본 소프트웨어의 일부 또는 전부를 사용하여 경쟁/대체 제품 또는 유사 서비스 제공
+   - 라이선스 검증/제한 기능의 우회, 무력화, 변조 시도
+
+3) 권리 귀속
+   - 본 소프트웨어에 대한 저작권 및 기타 권리는 전적으로 저작권자에게 귀속됩니다.
+   - 본 허가서는 소유권 이전이 아닌, 제한적 이용 허가입니다.
+
+4) 종료
+   - 위 금지 사항을 위반하거나 본 허가서 조건을 준수하지 않는 경우, 본 허가서는 즉시 자동 종료될 수 있으며
+     사용자는 즉시 사용을 중단하고 보유한 사본을 삭제해야 합니다.
+
+5) 보증의 부인 및 책임 제한
+   - 본 소프트웨어는 "있는 그대로(AS IS)" 제공되며, 상품성/특정 목적 적합성/비침해 등에 대한 어떠한 보증도
+     제공하지 않습니다.
+   - 저작권자는 본 소프트웨어의 사용 또는 사용 불능으로 인해 발생하는 손해에 대해, 관련 법령이 허용하는 범위 내에서
+     책임을 지지 않습니다.
+
+6) 준거법 및 관할
+   - 본 허가서는 대한민국 법률을 준거법으로 합니다.
+   - 분쟁이 발생할 경우, 관련 법령이 허용하는 범위 내에서 대한민국 법원에 의해 해결될 수 있습니다.
+
+7) 법적 책임에 관한 고지
+   - 본 소프트웨어를 무단 복제/배포/상업적 이용/무단 수정하는 행위는 대한민국 저작권법 등 관련 법령에 따라
+     민사상 손해배상 책임 및/또는 형사상 책임이 발생할 수 있습니다(구체적 성립 여부는 사안에 따라 달라질 수 있음).
+
+연락/허가 요청: GitHub 저장소 이슈 또는 저작권자가 지정한 채널</pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- Privacy Modal -->
+  <div class="modal" id="privacyModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>개인정보처리방침</h3>
+        <button class="modal-close" onclick="closeModal('privacy')">×</button>
+      </div>
+      <div class="modal-body">
+        <h4>1. 수집하는 개인정보 항목</h4>
+        <p>유니봇(UniBot)은 서비스 제공을 위해 다음과 같은 정보를 수집합니다:</p>
+        <ul>
+          <li><strong>라이선스 키</strong>: 라이선스 인증 및 유효성 검증</li>
+          <li><strong>기기 식별자(Machine ID)</strong>: 라이선스 중복 사용 방지를 위한 PC 고유 식별자</li>
+          <li><strong>앱 버전</strong>: 업데이트 확인 및 호환성 관리</li>
+        </ul>
+
+        <h4>2. 개인정보의 수집 및 이용 목적</h4>
+        <ul>
+          <li>라이선스 인증 및 유효성 검증</li>
+          <li>무료 사용 시간 관리</li>
+          <li>라이선스 중복 사용 방지</li>
+          <li>소프트웨어 업데이트 제공</li>
+        </ul>
+
+        <h4>3. 개인정보의 보유 및 이용 기간</h4>
+        <p>수집된 정보는 서비스 이용 기간 동안 보유되며, 라이선스 만료 후 또는 사용자 요청 시 삭제됩니다.</p>
+
+        <h4>4. 개인정보의 제3자 제공</h4>
+        <p>유니봇은 사용자의 개인정보를 제3자에게 제공하지 않습니다. 단, 법령에 의해 요구되는 경우는 예외로 합니다.</p>
+
+        <h4>5. 개인정보의 안전성 확보 조치</h4>
+        <ul>
+          <li>라이선스 키 및 기기 식별자는 암호화되어 저장됩니다</li>
+          <li>서버와의 통신은 HTTPS를 통해 암호화됩니다</li>
+        </ul>
+
+        <h4>6. 정보주체의 권리</h4>
+        <p>사용자는 언제든지 자신의 개인정보에 대해 열람, 정정, 삭제를 요청할 수 있습니다. Discord를 통해 문의해 주세요.</p>
+
+        <h4>7. 개인정보 보호책임자</h4>
+        <p>개인정보 관련 문의: <a href="discord://users/1016506446055215215" style="color: var(--accent);">Discord DM</a></p>
+
+        <h4>8. 개인정보처리방침 변경</h4>
+        <p>본 방침은 2025년 1월 1일부터 적용됩니다. 변경 시 웹사이트를 통해 공지합니다.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Image Lightbox -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <img id="lightboxImg" src="" alt="확대 이미지">
+  </div>
+
   <script>
+    // Scroll Progress Bar
+    window.addEventListener('scroll', () => {
+      const scrollTop = document.documentElement.scrollTop;
+      const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const progress = (scrollTop / scrollHeight) * 100;
+      document.getElementById('scrollProgress').style.width = progress + '%';
+    });
+
+    // Intersection Observer for scroll animations
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px 0px -100px 0px',
+      threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    // Observe all animated elements
+    document.querySelectorAll('.showcase-content, .showcase-visual, .spec-item, .pricing-card, .faq-item, .reveal').forEach(el => {
+      observer.observe(el);
+    });
+
     // FAQ Toggle
     document.querySelectorAll('.faq-question').forEach(button => {
       button.addEventListener('click', () => {
         const item = button.parentElement;
         const isActive = item.classList.contains('active');
         
-        // Close all
         document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
         
-        // Open clicked if wasn't active
-        if (!isActive) {
-          item.classList.add('active');
-        }
+        if (!isActive) item.classList.add('active');
       });
     });
 
-    // Scroll animations
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.opacity = '1';
-          entry.target.style.transform = 'translateY(0)';
-        }
-      });
-    }, observerOptions);
-
-    document.querySelectorAll('.feature-card, .pricing-card').forEach(el => {
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(30px)';
-      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-      observer.observe(el);
+    // Parallax effect on hero
+    window.addEventListener('scroll', () => {
+      const scrolled = window.pageYOffset;
+      const hero = document.querySelector('.hero-content');
+      if (hero && scrolled < window.innerHeight) {
+        hero.style.transform = `translateY(${scrolled * 0.3}px)`;
+        hero.style.opacity = 1 - (scrolled / window.innerHeight);
+      }
     });
 
-    // Smooth scroll for nav links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      });
-    });
+    // Discord contact - 직접 DM 열기
+    function contactDiscord(e) {
+      e.preventDefault();
+      window.location.href = 'discord://users/1016506446055215215';
+      // 폴백: Discord 앱이 없으면 웹으로 이동
+      setTimeout(() => {
+        window.open('https://discord.com/users/1016506446055215215', '_blank');
+      }, 500);
+    }
 
-    // Lightbox
-    function openLightbox(el) {
-      const img = el.querySelector('img');
-      document.getElementById('lightbox-img').src = img.src;
-      document.getElementById('lightbox').classList.add('active');
+    // Theme Toggle
+    function toggleTheme() {
+      const root = document.documentElement;
+      const isLight = root.classList.toggle('light');
+      localStorage.setItem('theme', isLight ? 'light' : 'dark');
+      updateScreenshots(isLight);
+    }
+
+    function updateScreenshots(isLight) {
+      document.querySelectorAll('.theme-screenshot').forEach(img => {
+        const newSrc = isLight ? img.dataset.light : img.dataset.dark;
+        // 부드러운 전환을 위한 페이드 효과
+        img.style.opacity = '0';
+        setTimeout(() => {
+          img.src = newSrc;
+          img.style.opacity = '1';
+        }, 150);
+      });
+    }
+
+    // 초기 테마 로드
+    (function initTheme() {
+      const saved = localStorage.getItem('theme');
+      // 저장된 테마가 있으면 적용, 없으면 다크 모드 기본
+      if (saved === 'light') {
+        document.documentElement.classList.add('light');
+        updateScreenshots(true);
+      } else {
+        // 다크 모드 기본 (저장된 값이 없거나 'dark'인 경우)
+        document.documentElement.classList.remove('light');
+        updateScreenshots(false);
+      }
+    })();
+
+    // Lightbox functions
+    function openLightbox(imgElement) {
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightboxImg');
+      // img 요소를 직접 받거나 src 문자열을 받음
+      const src = typeof imgElement === 'string' ? imgElement : imgElement.src;
+      lightboxImg.src = src;
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
     }
 
     function closeLightbox() {
       document.getElementById('lightbox').classList.remove('active');
+      document.body.style.overflow = '';
     }
 
-    document.getElementById('lightbox').addEventListener('click', function(e) {
-      if (e.target === this) closeLightbox();
-    });
+    // Modal functions
+    function openModal(type) {
+      document.getElementById(type + 'Modal').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
 
+    function closeModal(type) {
+      document.getElementById(type + 'Modal').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    // Close modals with Escape key
     document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.modal.active').forEach(modal => {
+          modal.classList.remove('active');
+        });
+        closeLightbox();
+        document.body.style.overflow = '';
+      }
     });
 
-    // Purchase CTA -> Discord DM
-    function contactDiscord(e) {
-      const discordDmUrl = 'https://discord.com/channels/@me/1016506446055215215';
+    // Close modal when clicking outside
+    document.querySelectorAll('.modal').forEach(modal => {
+      modal.addEventListener('click', function(e) {
+        if (e.target === this) {
+          this.classList.remove('active');
+          document.body.style.overflow = '';
+        }
+      });
+    });
 
-      if (e && typeof e.preventDefault === 'function') {
-        e.preventDefault();
-      }
-
-      window.open(discordDmUrl, '_blank', 'noopener,noreferrer');
-      return false;
-    }
+    // Smooth reveal on page load
+    window.addEventListener('load', () => {
+      document.body.style.opacity = '1';
+    });
   </script>
 </body>
 </html>
